@@ -8,7 +8,12 @@
     ref = "nixos-unstable";
   };
 
-  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+  inputs.nixos-hardware = {
+    type = "github";
+    owner = "NixOS";
+    repo = "nixos-hardware";
+    ref = "master";
+  };
 
   outputs = { self, nixpkgs, ... } @ attrs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
