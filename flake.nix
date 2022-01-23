@@ -1,6 +1,13 @@
 {
-  # TODO Depend on unstable branches. These are more stable than the HEAD of the master branch.
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs";
+  # The unstable branch is more stable than the HEAD of the master branch, since it has passed
+  # a set of CI tests on Hydra.
+  inputs.nixpkgs = {
+    type = "github";
+    owner = "NixOS";
+    repo = "nixpkgs";
+    ref = "nixos-unstable";
+  };
+
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
   outputs = { self, nixpkgs, ... } @ attrs: {
