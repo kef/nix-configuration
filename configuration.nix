@@ -54,7 +54,7 @@ in
   system.autoUpgrade.flake = "/etc/nixos";
   system.autoUpgrade.flags = [ "--update-input" "nixpkgs" "--update-input" "nixos-hardware" "--commit-lock-file" ];
 
-  # TODO Add garbage collection options.
+  nix.gc.automatic = true;
 
   # Set your time zone.
   time.timeZone = "Australia/Brisbane";
