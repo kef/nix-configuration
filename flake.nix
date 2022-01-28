@@ -15,11 +15,18 @@
     ref = "master";
   };
 
+  inputs.home-manager = {
+    type = "github";
+    owner = "nix-community";
+    repo = "home-manager";
+    ref = "master";
+  };
+
   outputs = { self, nixpkgs, ... } @ attrs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = attrs;
-      # TODO inherit nixos-hardware? Seems to be passed automatically via attrs/specialArgs.
+      # TODO inherit nixos-hardware and home-manager? Seem to be passed automatically via attrs/specialArgs.
       modules = [ ./configuration.nix ];
     };
   };

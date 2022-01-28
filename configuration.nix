@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, nixos-hardware, ... }:
+{ config, lib, pkgs, nixos-hardware, home-manager, ... }:
 
 let
 
@@ -20,6 +20,7 @@ in
   # TODO Review all source code in here.
   imports = [
     nixos-hardware.nixosModules.raspberry-pi-4
+    (import "${home-manager}/nixos")
   ];
 
   fileSystems."/" =
@@ -69,6 +70,7 @@ in
     vim
     nixos-option
     libraspberrypi
+    file
   ];
 
   programs.git.enable = true;
@@ -82,6 +84,12 @@ in
     passwordAuthentication = false;
     kbdInteractiveAuthentication = false;
   };
+
+  #home-manager.useUserPackages = true;
+  #home-manager.useGlobalPkgs = true;
+
+  # TODO Use NIX_PATH to find this?
+  home-manager.users.root = import ./home.nix;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
