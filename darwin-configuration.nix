@@ -30,8 +30,7 @@
   #home-manager.useUserPackages = true; # TODO Fouls up vim.
   home-manager.useGlobalPkgs = true;
 
-  # TODO Use NIX_PATH to find this? Or locate with nix-darwin configuration?
-  home-manager.users.kef = import /Users/kef/.config/nixpkgs/home.nix;
+  home-manager.users.kef = import ./home.nix;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
