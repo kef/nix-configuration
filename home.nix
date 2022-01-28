@@ -4,12 +4,11 @@
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     jq
-    #fzf
-    #ripgrep
-    #tree
-    #pstree
-    #htop
-    #ls-colors
+    fzf
+    ripgrep
+    tree
+    pstree
+    htop
   ];
 
   # Let Home Manager install and manage itself.
