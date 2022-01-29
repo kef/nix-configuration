@@ -26,11 +26,21 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, ... } @ attrs: {
+  outputs = { self, nixpkgs, home-manager, ... } @ attrs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = attrs;
-      modules = [ ./configuration.nix ];
+      modules = [
+        ./configuration.nix
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = false;
+          home-manager.users.root = import ./home.nix;
+
+          # Optionally, use home-manager.extraSpecialArgs to pass
+          # arguments to home.nix.
+        }
+      ];
     };
   };
 }

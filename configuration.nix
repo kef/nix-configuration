@@ -18,8 +18,6 @@ in
   imports = [
     # TODO Review all source code in here.
     nixos-hardware.nixosModules.raspberry-pi-4
-
-    (import "${home-manager}/nixos")
   ];
 
   fileSystems."/" =
@@ -82,12 +80,6 @@ in
     passwordAuthentication = false;
     kbdInteractiveAuthentication = false;
   };
-
-  #home-manager.useUserPackages = true; # TODO Fouls up vim.
-
-  home-manager.useGlobalPkgs = true;
-
-  home-manager.users.root = import ./home.nix;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
