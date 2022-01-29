@@ -1,5 +1,17 @@
 { config, pkgs, ... }:
 
+let
+  LS_COLORS = pkgs.fetchgit {
+    url = "https://github.com/trapd00r/LS_COLORS";
+    hash = "sha256-pyn3VnWDn5y7D/cVFV4e536ofolxBypE/01aSxDlIZI=";
+  };
+  ls-colors = pkgs.runCommand "ls-colors" {} ''
+    mkdir -p $out/bin $out/share
+    ln -s ${pkgs.coreutils}/bin/ls $out/bin/ls
+    ln -s ${pkgs.coreutils}/bin/dircolors $out/bin/dircolors
+    cp ${LS_COLORS}/LS_COLORS $out/share/LS_COLORS
+  '';
+in
 {
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
@@ -10,7 +22,17 @@
     tree
     pstree
     htop
+    ls-colors
   ];
+
+  programs.bash = {
+    bashrcExtra = ''
+      . ~/.oldbashrc
+    '';
+  };
+
+  # TODO Add alias vi=vim
+  # TODO Replicate settings on macOS.
 
   programs.neovim = {
     enable = true;
@@ -21,9 +43,6 @@
       gruvbox
     ];
   };
-
-  # TODO Add alias vi=vim
-  # TODO Replicate settings on macOS.
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
