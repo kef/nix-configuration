@@ -10,7 +10,7 @@
     ref = "nixos-unstable";
   };
 
-  inputs.nix-darwin = {
+  inputs.darwin = {
     type = "github";
     owner = "LnL7";
     repo = "nix-darwin";
@@ -27,8 +27,8 @@
   };
 
   # Build using: darwin-rebuild switch --flake .
-  outputs = { self, nix-darwin, ... } @ attrs: {
-    darwinConfigurations.preston.gnd = nix-darwin.lib.darwinSystem {
+  outputs = { self, darwin, ... } @ attrs: {
+    darwinConfigurations.preston.gnd = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       specialArgs = attrs;
       modules = [ ./darwin-configuration.nix ];
