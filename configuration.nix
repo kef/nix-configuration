@@ -17,8 +17,8 @@ in
   # Raspberry Pi 4 hardware.
   # ------------------------
 
-  # TODO Review all source code in here.
   imports = [
+    # TODO Review all source code in here.
     nixos-hardware.nixosModules.raspberry-pi-4
     (import "${home-manager}/nixos")
   ];
@@ -70,7 +70,6 @@ in
     vim
     nixos-option
     libraspberrypi
-    file
   ];
 
   programs.git.enable = true;
@@ -88,7 +87,6 @@ in
   #home-manager.useUserPackages = true;
   #home-manager.useGlobalPkgs = true;
 
-  # TODO Use NIX_PATH to find this?
   home-manager.users.root = import ./home.nix;
 
   # This value determines the NixOS release from which the default
