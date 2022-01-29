@@ -16,7 +16,9 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
-  nix.package = pkgs.nixFlakes;
+
+  # TODO Reinstate?
+  #nix.package = pkgs.nixFlakes;
 
   # TODO Bring in useful and applicable global settings from NixOS configuration.nix.
 
@@ -31,6 +33,8 @@
   };
 
   #home-manager.useUserPackages = true; # TODO Fouls up vim.
+
+  # TODO Try removing.
   home-manager.useGlobalPkgs = true;
 
   home-manager.users.kef = import ./home.nix;

@@ -16,7 +16,7 @@
     owner = "LnL7";
     repo = "nix-darwin";
     ref = "master";
-    inputs.nixpkgs.follows = "nixpkgs";
+    #inputs.nixpkgs.follows = "nixpkgs";
   };
 
   inputs.home-manager = {
