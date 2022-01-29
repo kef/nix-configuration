@@ -27,22 +27,14 @@
     ref = "master";
   };
 
-  outputs = { self, nix-darwin, nixpkgs, ... } @ attrs:
-  let
-    # TODO Can this be moved into darwin-configuration.nix to simplify? Probably.
-    # TODO Why wasn't it necessary for NixOS?
-    configuration = { pkgs, ... }: {
-      nix.package = pkgs.nixFlakes;
-    };
-  in
-  {
-    # Build darwin flake using:
-    # $ darwin-rebuild switch --flake .
+  # Build darwin flake using:
+  # $ darwin-rebuild switch --flake .
+  outputs = { self, nix-darwin, nixpkgs, ... } @ attrs: {
     darwinConfigurations.preston.gnd = nix-darwin.lib.darwinSystem {
-      system = "aarch64-linux";
+      system = "aarch64-darwin";
       specialArgs = attrs;
       # TODO inherit nix-darwin and home-manager? Seem to be passed automatically via attrs/specialArgs.
-      modules = [ configuration ./darwin-configuration.nix ];
+      modules = [ ./darwin-configuration.nix ];
     };
 
     # Expose the package set, including overlays, for convenience.
