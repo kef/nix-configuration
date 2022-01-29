@@ -30,7 +30,6 @@
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = attrs;
-      # TODO inherit nixos-hardware and home-manager? Seem to be passed automatically via attrs/specialArgs.
       modules = [ ./configuration.nix ];
     };
   };
