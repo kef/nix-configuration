@@ -1,7 +1,8 @@
-{ config, pkgs, home-manager, ... }:
+#{ config, pkgs, home-manager, ... }:
+{ config, pkgs, ... }:
 
 {
-  imports = [ (import "${home-manager}/nix-darwin") ];
+  #imports = [ (import "${home-manager}/nix-darwin") ];
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -36,9 +37,9 @@
 
   #home-manager.useUserPackages = true; # TODO Fouls up vim.
 
-  home-manager.useGlobalPkgs = true;
+  #home-manager.useGlobalPkgs = true;
 
-  home-manager.users.kef = import ./home.nix;
+  #home-manager.users.kef = import ./home.nix;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
