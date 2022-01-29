@@ -29,7 +29,7 @@
   # Build using: darwin-rebuild switch --flake .
   outputs = { self, darwin, ... } @ attrs: {
     darwinConfigurations.preston.gnd = darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
+      system = "x86_64-darwin";
       specialArgs = attrs;
       modules = [ ./darwin-configuration.nix ];
     };

@@ -17,9 +17,6 @@
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
 
-  # TODO Reinstate?
-  #nix.package = pkgs.nixFlakes;
-
   # TODO Bring in useful and applicable global settings from NixOS configuration.nix.
 
   # Create /etc/bashrc that loads the nix-darwin environment.
@@ -36,9 +33,9 @@
 
   #home-manager.useUserPackages = true; # TODO Fouls up vim.
 
-  #home-manager.useGlobalPkgs = true;
+  home-manager.useGlobalPkgs = true;
 
-  #home-manager.users.kef = import ./home.nix;
+  home-manager.users.kef = import ./home.nix;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
