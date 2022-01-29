@@ -85,6 +85,8 @@ in
   };
 
   #home-manager.useUserPackages = true;
+
+  # TODO Enable this?
   #home-manager.useGlobalPkgs = true;
 
   home-manager.users.root = import ./home.nix;
