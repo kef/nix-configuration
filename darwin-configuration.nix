@@ -1,8 +1,6 @@
-{ config, pkgs, home-manager, ... }:
+{ config, pkgs, ... }:
 
 {
-  imports = [ (import "${home-manager}/nix-darwin") ];
-
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
@@ -15,7 +13,6 @@
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
-  # nix.package = pkgs.nix;
 
   # TODO Bring in useful and applicable global settings from NixOS configuration.nix.
 
@@ -30,12 +27,6 @@
     name = "kef";
     home = "/Users/kef";
   };
-
-  #home-manager.useUserPackages = true; # TODO Fouls up vim.
-
-  home-manager.useGlobalPkgs = true;
-
-  home-manager.users.kef = import ./home.nix;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

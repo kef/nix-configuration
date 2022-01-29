@@ -10,7 +10,7 @@
     ref = "nixos-unstable";
   };
 
-  inputs.darwin = {
+  inputs.nix-darwin = {
     type = "github";
     owner = "LnL7";
     repo = "nix-darwin";
@@ -27,11 +27,18 @@
   };
 
   # Build using: darwin-rebuild switch --flake .
-  outputs = { self, darwin, ... } @ attrs: {
+  outputs = { self, nix-darwin, home-manager, ... } @ attrs: {
     darwinConfigurations.preston.gnd = darwin.lib.darwinSystem {
       system = "x86_64-darwin";
       specialArgs = attrs;
-      modules = [ ./darwin-configuration.nix ];
+      modules = [
+        ./darwin-configuration.nix
+        home-manager.darwinModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = false;
+          home-manager.users.kef = import ./home.nix;
+        }
+      ];
     };
 
     # Expose the package set, including overlays, for convenience.
