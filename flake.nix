@@ -16,8 +16,7 @@
     owner = "LnL7";
     repo = "nix-darwin";
     ref = "master";
-    # TODO Do this?
-    #inputs.nixpkgs.follows = "nixpkgs";
+    inputs.nixpkgs.follows = "nixpkgs";
   };
 
   inputs.home-manager = {
@@ -27,8 +26,7 @@
     ref = "master";
   };
 
-  # Build darwin flake using:
-  # $ darwin-rebuild switch --flake .
+  # Build using: darwin-rebuild switch --flake .
   outputs = { self, nix-darwin, nixpkgs, ... } @ attrs: {
     darwinConfigurations.preston.gnd = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
