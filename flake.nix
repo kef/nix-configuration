@@ -15,6 +15,7 @@
     owner = "NixOS";
     repo = "nixos-hardware";
     ref = "master";
+    inputs.nixpkgs.follows = "nixpkgs";
   };
 
   inputs.home-manager = {
@@ -22,6 +23,7 @@
     owner = "nix-community";
     repo = "home-manager";
     ref = "master";
+    inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, ... } @ attrs: {
