@@ -1,8 +1,7 @@
-#{ config, pkgs, home-manager, ... }:
-{ config, pkgs, ... }:
+{ config, pkgs, home-manager, ... }:
 
 {
-  #imports = [ (import "${home-manager}/nix-darwin") ];
+  imports = [ (import "${home-manager}/nix-darwin") ];
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
