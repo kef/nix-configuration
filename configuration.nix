@@ -84,10 +84,9 @@ in
     kbdInteractiveAuthentication = false;
   };
 
-  #home-manager.useUserPackages = true;
+  #home-manager.useUserPackages = true; # TODO Fouls up vim.
 
-  # TODO Enable this?
-  #home-manager.useGlobalPkgs = true;
+  home-manager.useGlobalPkgs = true;
 
   home-manager.users.root = import ./home.nix;
 
