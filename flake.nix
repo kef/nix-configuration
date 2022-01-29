@@ -1,4 +1,6 @@
 {
+  description = "NixOS system flake";
+
   # The unstable branch is more stable than the HEAD of the master branch, since it has passed
   # a set of CI tests on Hydra.
   inputs.nixpkgs = {

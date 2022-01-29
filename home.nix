@@ -11,6 +11,19 @@
     htop
   ];
 
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+    extraConfig = "colorscheme gruvbox";
+    plugins = with pkgs.vimPlugins; [
+      vim-nix
+      gruvbox
+    ];
+  };
+
+  # TODO Add alias vi=vim
+  # TODO Replicate settings on macOS.
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
