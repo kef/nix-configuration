@@ -28,7 +28,7 @@
 
   # Build using: darwin-rebuild switch --flake .
   outputs = { self, nix-darwin, home-manager, ... } @ attrs: {
-    darwinConfigurations.preston.gnd = darwin.lib.darwinSystem {
+    darwinConfigurations.preston.gnd = nix-darwin.lib.darwinSystem {
       system = "x86_64-darwin";
       specialArgs = attrs;
       modules = [
