@@ -7,8 +7,7 @@
     type = "github";
     owner = "NixOS";
     repo = "nixpkgs";
-    # TODO Or use nixos-unstable? Would be nice if there was a nix-darwin-unstable.
-    ref = "nixpkgs-unstable";
+    ref = "nixos-unstable";
   };
 
   inputs.nix-darwin = {
@@ -28,11 +27,10 @@
   };
 
   # Build using: darwin-rebuild switch --flake .
-  outputs = { self, nix-darwin, nixpkgs, ... } @ attrs: {
+  outputs = { self, nix-darwin, ... } @ attrs: {
     darwinConfigurations.preston.gnd = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       specialArgs = attrs;
-      # TODO inherit nix-darwin and home-manager? Seem to be passed automatically via attrs/specialArgs.
       modules = [ ./darwin-configuration.nix ];
     };
 

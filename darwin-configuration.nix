@@ -9,9 +9,9 @@
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages =
-    [ pkgs.vim
-    ];
+  environment.systemPackages = with pkgs; [
+    pkgs.vim
+  ];
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
@@ -26,6 +26,8 @@
   # programs.zsh.enable = true;  # default shell on catalina
   # programs.fish.enable = true;
   programs.bash.enable = true;
+
+  #programs.bash.enableCompletion = true;
 
   users.users.kef = {
     name = "kef";
