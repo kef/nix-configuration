@@ -5,6 +5,12 @@
     experimental-features = nix-command flakes
   '';
 
+  nix.gc.automatic = true;
+  #nix.gc.user = kef; # or root?
+
+  # Set your time zone.
+  time.timeZone = "Australia/Brisbane";
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -13,8 +19,6 @@
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
-
-  # TODO Bring in useful and applicable global settings from NixOS configuration.nix.
 
   # Create /etc/bashrc that loads the nix-darwin environment.
   # programs.zsh.enable = true;  # default shell on catalina
