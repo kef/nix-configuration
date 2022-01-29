@@ -12,14 +12,13 @@ let
 in
 
 {
-  # TODO Check if pkgs and nixpkgs are the same.
-
   # Raspberry Pi 4 hardware.
   # ------------------------
 
   imports = [
     # TODO Review all source code in here.
     nixos-hardware.nixosModules.raspberry-pi-4
+
     (import "${home-manager}/nixos")
   ];
 
