@@ -24,6 +24,7 @@
     owner = "nix-community";
     repo = "home-manager";
     ref = "master";
+    inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # Build using: darwin-rebuild switch --flake .
