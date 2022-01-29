@@ -3,6 +3,10 @@
 {
   imports = [ (import "${home-manager}/nix-darwin") ];
 
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
@@ -13,6 +17,8 @@
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
   nix.package = pkgs.nixFlakes;
+
+  # TODO Bring in useful and applicable global settings from NixOS configuration.nix.
 
   # Create /etc/bashrc that loads the nix-darwin environment.
   # programs.zsh.enable = true;  # default shell on catalina
