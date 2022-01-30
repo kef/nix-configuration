@@ -22,6 +22,8 @@ in
     tree
     pstree
     htop
+
+    # TODO There is a programs.bash.enableLsColors in NixOS, but not nix-darwin or home-manager.
     ls-colors
   ];
 
