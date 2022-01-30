@@ -26,6 +26,7 @@ in
   ];
 
   programs.bash = {
+    enable = true;
     bashrcExtra = ''
       . /etc/nixos/oldbashrc
     '';

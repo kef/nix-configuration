@@ -1,2 +1,2 @@
-dhlkhh kl
+# TODO Move this to nix configuration.
 eval $(dircolors ~/.nix-profile/share/LS_COLORS)
