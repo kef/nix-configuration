@@ -45,6 +45,9 @@ in
     bashrcExtra = ''
       . ~/.oldbashrc
     '';
+    shellAliases = {
+      vi = "vim";
+    };
   };
 
   programs.neovim = {
