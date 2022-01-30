@@ -60,8 +60,6 @@ in
   # Select internationalisation properties.
   i18n.defaultLocale = "en_AU.UTF-8";
 
-  users.users.root.openssh.authorizedKeys.keys = [ kef-preston-ed25519 ];
-
   # TODO Add further useful packages.
   environment.systemPackages = with pkgs; [
     vim
@@ -79,6 +77,21 @@ in
     permitRootLogin = "yes";
     passwordAuthentication = false;
     kbdInteractiveAuthentication = false;
+  };
+
+  users = {
+    users = {
+      kef = {
+        name = "kef";
+        home = "/home/kef";
+        group = "kef";
+        isNormalUser = true;
+      };
+      root = {
+        openssh.authorizedKeys.keys = [ kef-preston-ed25519 ];
+      };
+    };
+    groups.kef = {};
   };
 
   # This value determines the NixOS release from which the default
