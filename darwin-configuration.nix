@@ -5,16 +5,20 @@
     experimental-features = nix-command flakes
   '';
 
+  # Need to manage flake updates manually, since autoUpgrade not supported in nix-darwin.
+
   nix.gc.automatic = true;
   #nix.gc.user = kef; # or root?
 
   # Set your time zone.
   time.timeZone = "Australia/Brisbane";
 
+  # TODO Any way to set default locale?
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    pkgs.vim
+    vim
   ];
 
   # Auto upgrade nix package and the daemon service.
