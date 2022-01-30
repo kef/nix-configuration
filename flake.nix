@@ -35,7 +35,9 @@
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = false;
+          home-manager.verbose = true;
           home-manager.users.root = import ./home.nix;
+          home-manager.users.kef = import ./home.nix;
 
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix.

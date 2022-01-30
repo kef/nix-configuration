@@ -27,7 +27,7 @@ in
 
   programs.bash = {
     bashrcExtra = ''
-      . ~/.oldbashrc
+      . /etc/nixos/oldbashrc
     '';
     shellAliases = {
       vi = "vim";
