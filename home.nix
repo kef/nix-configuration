@@ -13,13 +13,6 @@ let
   '';
 in
 {
-  # TODO Some of this may be redundant when called from nix-darwin or nixos.
-
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "kef";
-  home.homeDirectory = "/Users/kef";
-
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     jq
