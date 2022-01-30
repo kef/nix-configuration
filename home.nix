@@ -29,10 +29,10 @@ in
     bashrcExtra = ''
       . ~/.oldbashrc
     '';
+    shellAliases = {
+      vi = "vim";
+    };
   };
-
-  # TODO Add alias vi=vim
-  # TODO Replicate settings on macOS.
 
   programs.neovim = {
     enable = true;
@@ -43,6 +43,8 @@ in
       gruvbox
     ];
   };
+
+  # TODO Replicate settings on macOS.
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
