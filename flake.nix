@@ -42,6 +42,10 @@
           # arguments to home.nix.
         }
       ];
+
+      # TODO Let 'nixos-version --json' know the Git revision of this flake.
+      #      Maybe goes in configuration.nix.
+      #system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
     };
   };
 }
