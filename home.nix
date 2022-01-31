@@ -46,7 +46,48 @@ in
       . ~/.oldbashrc
     '';
     shellAliases = {
+
+      # General.
+      h = "history";
+      #ls = "ls --color=auto -sF";
+      l = "ls";
+      la = "l -a";
+      ll = "l -l";
+      #less = "less -R";
+      u = "cd ..";
+      r = "rsync";
+      pg = "ping google.com";
       vi = "vim";
+      vish = "vi $(find . -type f -print | xargs grep -l '^#\!/bin/bash')";
+      rg1 = "rg --max-depth 1";
+      m = "ssh moon";
+      n = "ssh nixos";
+      p = "ssh puff";
+
+      # Git.
+      gi = "git init";
+      gcl = "git clone";
+      g = "git status";
+      ga = "git add .";
+      gl = "git log";
+      gd = "git diff";
+      gdc = "git diff --cached";
+      gc = "git commit";
+      gca = "git commit -a -m _";
+      gp = "git push";
+      gpom = "git push origin master";
+      gpl = "git pull";
+      gplom = "git pull origin master";
+      gt = "git tag";
+      gb = "git branch -a";
+      gco = "git checkout";
+      gs = "git stash";
+      gsp = "git stash pop";
+      gsl = "git stash list";
+      gss = "git stash show";
+      gsd = "git stash drop";
+      gr = "git remote -v";
+      gitrm = "git stat | grep deleted | awk '{print $3}' | xargs git rm";
     };
   };
 
