@@ -7,8 +7,13 @@ let
   };
   ls-colors = pkgs.runCommand "ls-colors" {} ''
     mkdir -p $out/bin $out/share
+
+    # TODO Shouldn't need a different ls on NixOS.
     ln -s ${pkgs.coreutils}/bin/ls $out/bin/ls
+
+    # TODO Might be direct package for dircolors. Or a home-manager enable option.
     ln -s ${pkgs.coreutils}/bin/dircolors $out/bin/dircolors
+
     cp ${LS_COLORS}/LS_COLORS $out/share/LS_COLORS
   '';
 in
