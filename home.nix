@@ -49,7 +49,7 @@ in
 
       # General.
       h = "history";
-      #ls = "ls --color=auto -sF";
+      ls = "ls --color=auto -sF";
       l = "ls";
       la = "l -a";
       ll = "l -l";
