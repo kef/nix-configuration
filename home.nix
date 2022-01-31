@@ -43,6 +43,7 @@ in
   programs.bash = {
     enable = true;
     bashrcExtra = ''
+      eval $(dircolors ~/.nix-profile/share/LS_COLORS)
       . ~/.oldbashrc
     '';
     shellAliases = {
