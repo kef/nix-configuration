@@ -30,7 +30,7 @@ in
   programs.bash = {
     enable = true;
     bashrcExtra = ''
-      . /etc/nixos/oldbashrc
+      eval $(dircolors ~/.nix-profile/share/LS_COLORS)
     '';
     shellAliases = {
 
