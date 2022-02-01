@@ -147,6 +147,14 @@ in
   programs.nix-index.enableBashIntegration = true;
   programs.command-not-found.enable = false;
 
+  programs.readline.enable = true;
+  programs.readline.variables = {
+    show-all-if-ambiguous = "On";
+  };
+  programs.readline.bindings = {
+    "\\ep" = "history-search-backward";
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
