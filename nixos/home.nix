@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let
+  # TODO Turn this into a flake dependency.
   LS_COLORS = pkgs.fetchgit {
     url = "https://github.com/trapd00r/LS_COLORS";
     hash = "sha256-pyn3VnWDn5y7D/cVFV4e536ofolxBypE/01aSxDlIZI=";
@@ -20,7 +21,6 @@ in
 {
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    file
     jq
     fzf
     ripgrep
@@ -46,7 +46,26 @@ in
 
     # TODO There is a programs.bash.enableLsColors in NixOS, but not nix-darwin or home-manager.
     ls-colors
+
+    # NixOS only. Use macOS supplied version in nix-darwin.
+    file
   ];
+
+  #programs.git = {
+    #enable = true;
+    #userName = "Jane Doe";
+    #userEmail = "jane.doe@example.org";
+  #};
+
+  # might not work on stdenv.isDarwin
+  #programs.git = {
+    #enable = true;
+    #extraConfig = {
+      #credential.helper = "${
+          #pkgs.git.override { withLibsecret = true; }
+        #}/bin/git-credential-libsecret";
+    #};
+  #};
 
   # TODO Look into using lorri. Should this go in NixOS/nix-darwin configuration.
   #services = {
@@ -62,11 +81,14 @@ in
 
       # General.
       h = "history";
-      #ls = "ls --color=auto -sF";
+      ls = "ls --color=auto -sF";
       l = "ls";
       la = "l -a";
       ll = "l -l";
+
+      # TODO What does this option do?
       #less = "less -R";
+
       u = "cd ..";
       r = "rsync";
       pg = "ping google.com";
@@ -113,8 +135,6 @@ in
       gruvbox
     ];
   };
-
-  # TODO Replicate settings on macOS.
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

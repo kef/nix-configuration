@@ -22,6 +22,24 @@ in
     tree
     pstree
     htop
+
+    #bat
+    #exa
+    #fd
+
+    # TODO Look into using nix-index.
+    nix-index
+
+    # TODO Look into using direnv.
+    #direnv = {
+      #enable = true;
+      #nix-direnv = {
+        #enable = true;
+        #enableFlakes = true;
+      #};
+    #};
+
+    # TODO There is a programs.bash.enableLsColors in NixOS, but not nix-darwin or home-manager.
     ls-colors
   ];
 
@@ -41,10 +59,17 @@ in
     #};
   #};
 
+  # TODO Look into using lorri. Should this go in NixOS/nix-darwin configuration.
+  #services = {
+    #lorri.enable = true;
+  #};
+
   programs.bash = {
     enable = true;
     bashrcExtra = ''
       eval $(dircolors ~/.nix-profile/share/LS_COLORS)
+
+      # TODO Phase out once all settings have been migrated to Nix.
       . ~/.oldbashrc
     '';
     shellAliases = {
@@ -55,7 +80,10 @@ in
       l = "ls";
       la = "l -a";
       ll = "l -l";
+
+      # TODO What does this option do?
       #less = "less -R";
+
       u = "cd ..";
       r = "rsync";
       pg = "ping google.com";
