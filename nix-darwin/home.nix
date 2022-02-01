@@ -131,6 +131,10 @@ in
     ];
   };
 
+  programs.nix-index.enable = true;
+  programs.nix-index.enableBashIntegration = true;
+  programs.command-not-found.enable = false;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
