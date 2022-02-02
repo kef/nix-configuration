@@ -10,6 +10,7 @@
   nix.gc.automatic = true;
   #nix.gc.user = kef; # or root?
 
+  # TODO Currently get an error due to a macOS bug in systemsetup -settimezone.
   # Set your time zone.
   time.timeZone = "Australia/Brisbane";
 
