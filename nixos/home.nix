@@ -97,10 +97,6 @@ in
       l = "ls";
       la = "l -a";
       ll = "l -l";
-
-      # TODO What does this option do?
-      #less = "less -R";
-
       u = "cd ..";
       r = "rsync";
       pg = "ping google.com";
