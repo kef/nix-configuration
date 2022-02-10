@@ -8,6 +8,8 @@ let
 
   kef-preston-ed25519 =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOFM41knX5DA3XByazAhmdYPdccWurl7ngIg6um/LoFr kef@preston.gnd";
+  root-preston-ed25519 =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC81ne+ldCdDWWsOY5UiUQiVlwsZvWX/Cqsit7IX0qQW root@preston.gnd";
 
 in
 
@@ -88,7 +90,7 @@ in
         isNormalUser = true;
       };
       root = {
-        openssh.authorizedKeys.keys = [ kef-preston-ed25519 ];
+        openssh.authorizedKeys.keys = [ kef-preston-ed25519 root-preston-ed25519 ];
       };
     };
     groups.kef = {};
