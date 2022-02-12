@@ -10,6 +10,13 @@
   nix.gc.automatic = true;
   #nix.gc.user = kef; # or root?
 
+  nix.distributedBuilds = true;
+
+  nix.buildMachines = [
+    { hostName = "nixos"; system = "aarch64-linux"; }
+    { hostName = "moon"; system = "x86_64-linux"; }
+  ];
+
   # TODO Currently get an error due to a macOS bug in systemsetup -settimezone.
   # Set your time zone.
   time.timeZone = "Australia/Brisbane";
@@ -39,6 +46,7 @@
   };
 
   system.defaults.dock.autohide = true;
+  system.defaults.NSGlobalDomain.AppleFontSmoothing = 0;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
