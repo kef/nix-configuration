@@ -51,8 +51,12 @@ in
 
   # TODO Refer to remote git repo on puff? Might not be able to use the given flags then.
   # TODO Work out how to automatically push changes to remote git repo on puff.
-  system.autoUpgrade.flake = "/etc/nixos";
-  system.autoUpgrade.flags = [ "--update-input" "nixpkgs" "--update-input" "nixos-hardware" "--commit-lock-file" ];
+  system.autoUpgrade.flake = "/root/r/work/nix-configuration/nixos";
+  system.autoUpgrade.flags = [
+    "--update-input" "nixpkgs"
+    "--update-input" "nixos-hardware"
+    "--update-input" "home-manager"
+    "--commit-lock-file" ];
 
   nix.gc.automatic = true;
 
