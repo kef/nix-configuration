@@ -4,7 +4,7 @@ let
   # TODO Turn this into a flake dependency.
   LS_COLORS = pkgs.fetchgit {
     url = "https://github.com/trapd00r/LS_COLORS";
-    hash = "sha256-pyn3VnWDn5y7D/cVFV4e536ofolxBypE/01aSxDlIZI=";
+    hash = "sha256-LsR7zH4N6Rf1ILb7jAZ6kqkVAeIWJeR04EtWAjVJ1sA=";
   };
   ls-colors = pkgs.runCommand "ls-colors" {} ''
     mkdir -p $out/bin $out/share
