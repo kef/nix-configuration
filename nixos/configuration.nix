@@ -71,6 +71,7 @@ in
     vim
     nixos-option
     libraspberrypi
+    home-manager
   ];
 
   programs.git.enable = true;
