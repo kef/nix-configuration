@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, home-manager, ... }:
 
 {
   nix.extraOptions = ''
@@ -27,6 +27,7 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     vim
+    home-manager
   ];
 
   # Auto upgrade nix package and the daemon service.

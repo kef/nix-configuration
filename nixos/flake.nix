@@ -18,6 +18,7 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
+  # TODO Since there is a home-manager package in nixpkgs, could pull from there?
   inputs.home-manager = {
     type = "github";
     owner = "nix-community";

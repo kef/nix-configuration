@@ -18,6 +18,7 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
+  # TODO Since there is a home-manager package in nixpkgs, could pull from there?
   inputs.home-manager = {
     type = "github";
     owner = "nix-community";
@@ -38,11 +39,14 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = false;
           home-manager.users.kef = import ./home.nix;
+
+          # Optionally, use home-manager.extraSpecialArgs to pass
+          # arguments to home.nix.
         }
       ];
     };
 
     # Expose the package set, including overlays, for convenience.
-    #darwinPackages = self.darwinConfigurations.preston.gnd.pkgs;
+    #darwinPackages = self.darwinConfigurations."preston.gnd".pkgs;
   };
 }
