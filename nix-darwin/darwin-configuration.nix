@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, home-manager, ... }:
 
 {
   nix.extraOptions = ''
@@ -25,9 +25,9 @@
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [
-    vim
-    home-manager
+  environment.systemPackages = [
+    pkgs.vim
+    home-manager.defaultPackage
   ];
 
   # Auto upgrade nix package and the daemon service.
