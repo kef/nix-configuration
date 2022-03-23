@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   # TODO Turn this into a flake dependency.
@@ -41,7 +41,8 @@ in
 
     # TODO There is a programs.bash.enableLsColors in NixOS, but not nix-darwin or home-manager.
     ls-colors
-  ];
+
+  ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version in nix-darwin.
 
   #programs.git = {
     #enable = true;
