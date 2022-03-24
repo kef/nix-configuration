@@ -30,7 +30,7 @@
   # Build using: darwin-rebuild switch --flake .
   # Add --recreate-lock-file option to update all flake dependencies.
   outputs = { self, nix-darwin, home-manager, ... } @ attrs: {
-    darwinConfigurations."preston.gnd" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations.preston.gnd = nix-darwin.lib.darwinSystem {
       system = "x86_64-darwin";
       specialArgs = attrs;
       modules = [
@@ -49,6 +49,6 @@
     # Expose the package set, including overlays, for convenience.
     #darwinPackages = self.darwinConfigurations."preston.gnd".pkgs;
 
-    homeConfigurations = self.darwinConfigurations."preston.gnd".config.home-manager.users;
+    homeConfigurations = self.darwinConfigurations.preston.gnd.config.home-manager.users;
   };
 }
