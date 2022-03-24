@@ -2,7 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, nixos-hardware, home-manager, ... }:
+#{ config, lib, pkgs, nixos-hardware, home-manager, ... }:
+{ config, lib, pkgs, nixos-hardware, ... }:
 
 let
 
@@ -67,11 +68,11 @@ in
   i18n.defaultLocale = "en_AU.UTF-8";
 
   # TODO Add further useful packages.
-  environment.systemPackages = [
-    pkgs.vim
-    pkgs.nixos-option
-    pkgs.libraspberrypi
-    home-manager.defaultPackage
+  environment.systemPackages = with pkgs; [
+    vim
+    nixos-option
+    libraspberrypi
+    home-manager
   ];
 
   programs.git.enable = true;
