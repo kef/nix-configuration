@@ -49,6 +49,6 @@
     # Expose the package set, including overlays, for convenience.
     #darwinPackages = self.darwinConfigurations."preston.gnd".pkgs;
 
-    homeConfigurations = darwinConfigurations."preston.gnd".config.home-manager.users;
+    homeConfigurations = self.darwinConfigurations."preston.gnd".config.home-manager.users;
   };
 }
