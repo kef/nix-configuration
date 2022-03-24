@@ -28,7 +28,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ attrs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = attrs;
       modules = [
@@ -47,6 +47,8 @@
       # TODO Let 'nixos-version --json' know the Git revision of this flake.
       #      Maybe goes in configuration.nix.
       #system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+
+      homeConfigurations = nixosConfigurations."nixos".config.home-manager.users;
     };
   };
 }
