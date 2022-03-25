@@ -73,10 +73,12 @@ in
   programs.bash = {
     enable = true;
 
-    # LESS_TERMCAP variables are set this because home-manager sessionVariables
+    # LESS_TERMCAP variables are set here because home-manager sessionVariables
     # values are surrounded by double quotes, which defeats the shell quoting of
     # escape characters.
     bashrcExtra = ''
+      unset NIX_PATH
+
       eval $(dircolors ~/.nix-profile/share/LS_COLORS)
 
       export LESS_TERMCAP_mb=$'\e[1;32m';
