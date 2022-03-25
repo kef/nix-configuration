@@ -18,7 +18,6 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  # TODO Since there is a home-manager package in nixpkgs, could pull from there?
   inputs.home-manager = {
     type = "github";
     owner = "nix-community";
@@ -48,6 +47,9 @@
       #      Maybe goes in configuration.nix.
       #system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
     };
+
+    # Expose the package set, including overlays, for convenience.
+    packages = self.nixosConfigurations."nixos".pkgs;
 
     homeConfigurations = self.nixosConfigurations."nixos".config.home-manager.users;
   };

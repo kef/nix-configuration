@@ -18,7 +18,6 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  # TODO Since there is a home-manager package in nixpkgs, could pull from there?
   inputs.home-manager = {
     type = "github";
     owner = "nix-community";
@@ -47,7 +46,7 @@
     };
 
     # Expose the package set, including overlays, for convenience.
-    #darwinPackages = self.darwinConfigurations."preston.gnd".pkgs;
+    packages = self.darwinConfigurations.preston.gnd.pkgs;
 
     homeConfigurations = self.darwinConfigurations.preston.gnd.config.home-manager.users;
   };
