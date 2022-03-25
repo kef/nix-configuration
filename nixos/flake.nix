@@ -49,7 +49,7 @@
     };
 
     # Expose the package set, including overlays, for convenience.
-    packages = self.nixosConfigurations."nixos".pkgs;
+    packages."aarch64-linux" = self.nixosConfigurations."nixos".pkgs;
 
     homeConfigurations = self.nixosConfigurations."nixos".config.home-manager.users;
   };

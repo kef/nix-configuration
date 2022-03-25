@@ -46,7 +46,7 @@
     };
 
     # Expose the package set, including overlays, for convenience.
-    packages = self.darwinConfigurations.preston.gnd.pkgs;
+    packages."x86_64-darwin" = self.darwinConfigurations.preston.gnd.pkgs;
 
     homeConfigurations = self.darwinConfigurations.preston.gnd.config.home-manager.users;
   };
