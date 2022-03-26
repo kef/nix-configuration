@@ -34,7 +34,6 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
-  # TODO Available in both nix-darwin and home-manager. Set in which?
   # Create /etc/bashrc that loads the nix-darwin environment.
   # programs.zsh.enable = true;  # default shell on catalina
   # programs.fish.enable = true;
