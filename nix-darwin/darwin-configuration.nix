@@ -40,7 +40,7 @@
   # programs.fish.enable = true;
   programs.bash.enable = true;
 
-  #programs.bash.enableCompletion = true;
+  programs.bash.enableCompletion = true;
 
   users.users.kef = {
     name = "kef";
