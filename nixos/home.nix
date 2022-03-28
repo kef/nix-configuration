@@ -112,9 +112,6 @@ in
         whitespace = "fix";
         autocrlf = "input";
       };
-      credential = {
-        helper = "osxkeychain";
-      };
       diff = {
         renames = true;
       };
