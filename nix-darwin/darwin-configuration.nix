@@ -1,5 +1,5 @@
-#{ config, pkgs, home-manager, ... }:
-{ config, pkgs, ... }:
+#{ config, pkgs, nixpkgs, home-manager, ... }:
+{ config, pkgs, nixpkgs, ... }:
 
 {
   nix.extraOptions = ''
@@ -10,6 +10,8 @@
 
   nix.gc.automatic = true;
   #nix.gc.user = kef; # or root?
+
+  nix.registry.nixpkgs.flake = nixpkgs;
 
   nix.distributedBuilds = true;
 

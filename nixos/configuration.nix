@@ -2,8 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-#{ config, lib, pkgs, nixos-hardware, home-manager, ... }:
-{ config, lib, pkgs, nixos-hardware, ... }:
+#{ config, lib, pkgs, nixpkgs, nixos-hardware, home-manager, ... }:
+{ config, lib, pkgs, nixpkgs, nixos-hardware, ... }:
 
 let
 
@@ -60,6 +60,8 @@ in
     "--commit-lock-file" ];
 
   nix.gc.automatic = true;
+
+  nix.registry.nixpkgs.flake = nixpkgs;
 
   # Set your time zone.
   time.timeZone = "Australia/Brisbane";
