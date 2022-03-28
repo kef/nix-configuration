@@ -119,10 +119,9 @@ in
         # TODO Convert boolean string to true?
         renames = "true";
       };
-
-#[diff "ruby"]
-#  funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
-
+      diff."ruby" = {
+        funcname = "^ *\\(\\(class\\|module\\|def\\) .*\\)";
+      };
       format = {
         pretty = "format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset";
       };
