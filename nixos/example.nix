@@ -75,3 +75,11 @@
   #   allowUnfree = true;
   # };
 
+#  programs.git = {
+    # might not work on stdenv.isDarwin
+    #extraConfig = {
+      #credential.helper = "${
+          #pkgs.git.override { withLibsecret = true; }
+        #}/bin/git-credential-libsecret";
+    #};
+#  };
