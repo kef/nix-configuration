@@ -111,8 +111,7 @@ in
         helper = "osxkeychain";
       };
       diff = {
-        # TODO Convert boolean string to true?
-        renames = "true";
+        renames = true;
       };
       diff."ruby" = {
         funcname = "^ *\\(\\(class\\|module\\|def\\) .*\\)";
@@ -124,24 +123,20 @@ in
 	      defaultBranch = "master";
       };
       merge = {
-        # TODO Convert boolean string to true?
-        summary = "true";
+        summary = true;
         tool = "opendiff";
 #        tool = "vimdiff";
       };
       pull = {
         default = "tracking";
-        # TODO Convert boolean string to true?
-        rebase = "true";
+        rebase = true;
       };
       push = {
         default = "tracking";
       };
       rerere = {
-        # TODO Convert boolean string to true?
-        enabled = "true";
-        # TODO Convert boolean string to true?
-        autoUpdate = "true";
+        enabled = true;
+        autoUpdate = true;
       };
     };
     ignores = [
