@@ -54,9 +54,7 @@ in
   # TODO Work out how to automatically push changes to remote git repo on puff.
   system.autoUpgrade.flake = "/root/r/work/nix-configuration/nixos";
   system.autoUpgrade.flags = [
-    "--update-input" "nixpkgs"
-    "--update-input" "nixos-hardware"
-    "--update-input" "home-manager"
+    "--recreate-lock-file"
     "--commit-lock-file" ];
 
   nix.gc.automatic = true;

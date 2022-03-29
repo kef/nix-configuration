@@ -26,13 +26,22 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ attrs: {
+  inputs.ls-colors = {
+    type = "github";
+    owner = "trapd00r";
+    repo = "LS_COLORS";
+    ref = "master";
+    flake = false;
+  };
+
+  outputs = { self, nixpkgs, home-manager, ls-colors, ... } @ attrs: {
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = attrs;
       modules = [
         ./configuration.nix
         home-manager.nixosModules.home-manager {
+          extraSpecialArgs = attrs;
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = false;
           home-manager.users.root = import ./home.nix;

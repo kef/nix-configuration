@@ -21,6 +21,23 @@
         "type": "github"
       }
     },
+    "ls-colors": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1648311497,
+        "narHash": "sha256-ZtqD225u8CJBGpDyPtGgol1QQt9hiYTcXMFLcHmk0Gc=",
+        "owner": "trapd00r",
+        "repo": "LS_COLORS",
+        "rev": "17daed10dadb4656a9e06d2826cdceb2f19a74b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "trapd00r",
+        "ref": "master",
+        "repo": "LS_COLORS",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -61,6 +78,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "ls-colors": "ls-colors",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs"
       }

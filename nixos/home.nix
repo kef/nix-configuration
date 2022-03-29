@@ -1,21 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, ls-colors, ... }:
 
 let
-  # TODO Turn this into a flake dependency.
-  LS_COLORS = pkgs.fetchgit {
-    url = "https://github.com/trapd00r/LS_COLORS";
-    hash = "sha256-LsR7zH4N6Rf1ILb7jAZ6kqkVAeIWJeR04EtWAjVJ1sA=";
-  };
-  ls-colors = pkgs.runCommand "ls-colors" {} ''
+  ls-colors-xxx = pkgs.runCommand "ls-colors-xxx" {} ''
     mkdir -p $out/bin $out/share
-
-    # TODO Shouldn't need a different ls on NixOS.
-    ln -s ${pkgs.coreutils}/bin/ls $out/bin/ls
-
-    # TODO Might be direct package for dircolors. Or a home-manager enable option.
-    ln -s ${pkgs.coreutils}/bin/dircolors $out/bin/dircolors
-
-    cp ${LS_COLORS}/LS_COLORS $out/share/LS_COLORS
+    cp ${ls-colors.outPath}/LS_COLORS $out/share/LS_COLORS
   '';
 in
 {
@@ -44,8 +32,7 @@ in
       #};
     #};
 
-    # TODO There is a programs.bash.enableLsColors in NixOS, but not nix-darwin or home-manager.
-    ls-colors
+    ls-colors-xxx
 
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version in nix-darwin.
 

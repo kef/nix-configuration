@@ -26,15 +26,24 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
+  inputs.ls-colors = {
+    type = "github";
+    owner = "trapd00r";
+    repo = "LS_COLORS";
+    ref = "master";
+    flake = false;
+  };
+
   # Build using: darwin-rebuild switch --flake .
   # Add --recreate-lock-file option to update all flake dependencies.
-  outputs = { self, nixpkgs, nix-darwin, home-manager, ... } @ attrs: {
+  outputs = { self, nixpkgs, nix-darwin, home-manager, ls-colors, ... } @ attrs: {
     darwinConfigurations."preston" = nix-darwin.lib.darwinSystem {
       system = "x86_64-darwin";
       specialArgs = attrs;
       modules = [
         ./darwin-configuration.nix
         home-manager.darwinModules.home-manager {
+          extraSpecialArgs = attrs;
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = false;
           home-manager.users.kef = import ./home.nix;
