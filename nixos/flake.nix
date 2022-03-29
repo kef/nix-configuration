@@ -34,21 +34,18 @@
     flake = false;
   };
 
-  outputs = { self, nixpkgs, home-manager, ls-colors, ... } @ attrs: {
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, ls-colors, ... }: {
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
-      specialArgs = attrs;
+      specialArgs = { inherit nixpkgs nixos-hardware; };
       modules = [
         ./configuration.nix
         home-manager.nixosModules.home-manager {
-          extraSpecialArgs = attrs;
+          home-manager.extraSpecialArgs = { inherit ls-colors; };
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = false;
           home-manager.users.root = import ./home.nix;
           home-manager.users.kef = import ./home.nix;
-
-          # Optionally, use home-manager.extraSpecialArgs to pass
-          # arguments to home.nix.
         }
       ];
 

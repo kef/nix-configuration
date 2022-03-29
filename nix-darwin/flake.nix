@@ -36,20 +36,17 @@
 
   # Build using: darwin-rebuild switch --flake .
   # Add --recreate-lock-file option to update all flake dependencies.
-  outputs = { self, nixpkgs, nix-darwin, home-manager, ls-colors, ... } @ attrs: {
+  outputs = { self, nixpkgs, nix-darwin, home-manager, ls-colors, ... }: {
     darwinConfigurations."preston" = nix-darwin.lib.darwinSystem {
       system = "x86_64-darwin";
-      specialArgs = attrs;
+      specialArgs = { inherit nixpkgs; };
       modules = [
         ./darwin-configuration.nix
         home-manager.darwinModules.home-manager {
-          extraSpecialArgs = attrs;
+          home-manager.extraSpecialArgs = { inherit ls-colors; };
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = false;
           home-manager.users.kef = import ./home.nix;
-
-          # Optionally, use home-manager.extraSpecialArgs to pass
-          # arguments to home.nix.
         }
       ];
     };
