@@ -1,7 +1,7 @@
 { config, lib, pkgs, ls-colors, ... }:
 
 let
-  ls-colors-xxx = pkgs.runCommand "ls-colors-xxx" {} ''
+  ls-colors-pkg = pkgs.runCommand "ls-colors-pkg" {} ''
     mkdir -p $out/bin $out/share
     cp ${ls-colors.outPath}/LS_COLORS $out/share/LS_COLORS
   '';
@@ -32,7 +32,7 @@ in
       #};
     #};
 
-    ls-colors-xxx
+    ls-colors-pkg
 
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version in nix-darwin.
 
