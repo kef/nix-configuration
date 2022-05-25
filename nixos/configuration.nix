@@ -23,6 +23,12 @@ in
     nixos-hardware.nixosModules.raspberry-pi-4
   ];
 
+  # To expand the size of the root partition and file system to use all available space:
+  #
+  # echo ",+," | sfdisk -N2 --no-reread /dev/mmcblk0
+  # nix shell nixpkgs#parted -c partprobe
+  # resize2fs /dev/disk/by-label/NIXOS_SD
+
   fileSystems."/" =
     { device = "/dev/disk/by-label/NIXOS_SD";
       fsType = "ext4";
