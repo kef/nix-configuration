@@ -23,6 +23,7 @@ in
     #fd
 
     rnix-lsp
+    nixpkgs-fmt
 
     # TODO Look into using nix-index.
     nix-index
