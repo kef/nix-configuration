@@ -22,6 +22,8 @@ in
     #exa
     #fd
 
+    rnix-lsp
+
     # TODO Look into using nix-index.
     nix-index
 
