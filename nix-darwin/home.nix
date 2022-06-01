@@ -29,6 +29,7 @@ in
     nix-index
 
     # TODO Look into using direnv.
+    direnv
     #direnv = {
       #enable = true;
       #nix-direnv = {
