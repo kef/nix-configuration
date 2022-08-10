@@ -17,6 +17,7 @@ in
     tree
     pstree
     htop
+    dos2unix
 
     #bat
     #exa
