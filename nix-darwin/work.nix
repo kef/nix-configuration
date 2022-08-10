@@ -44,8 +44,8 @@ in
 
   programs.git = {
     enable = true;
-    userName = "kef";
-    userEmail = "_@_";
+    userName = "pokeeffe";
+    userEmail = "paul.okeeffe@autogeneral.com.au";
     aliases = {
       changes = "diff --name-status -r";
       st = "status";
@@ -148,9 +148,6 @@ in
       "dataSources.xml"
       "vcs.xml"
     ];
-    includes = [
-      { path = "~/.gitconfig.local"; }
-    ];
   };
 
   # TODO Look into using lorri. Should this go in NixOS/nix-darwin configuration.
@@ -178,6 +175,7 @@ in
       export LESS_TERMCAP_us=$'\e[1;4;31m';
 
       # TODO Phase out once all settings have been migrated to Nix.
+      # TODO Move .bashrc to .oldbashrc on work laptop.
       . ~/.oldbashrc
     '';
     shellAliases = {
@@ -225,6 +223,7 @@ in
     };
   };
 
+  # TODO Incorporate .vimrc into this configuration. Not getting picked up.
   programs.neovim = {
     enable = true;
     vimAlias = true;

@@ -41,7 +41,7 @@
       system = "x86_64-darwin";
       specialArgs = { inherit nixpkgs; };
       modules = [
-        ./darwin-configuration.nix
+        ./darwin-configuration-home.nix
         home-manager.darwinModules.home-manager {
           home-manager.extraSpecialArgs = { inherit ls-colors; };
           home-manager.useGlobalPkgs = true;
@@ -50,6 +50,22 @@
         }
       ];
     };
+
+    darwinConfigurations."A05392" = nix-darwin.lib.darwinSystem {
+      system = "x86_64-darwin";
+      specialArgs = { inherit nixpkgs; };
+      modules = [
+        ./darwin-configuration-work.nix
+        home-manager.darwinModules.home-manager {
+          home-manager.extraSpecialArgs = { inherit ls-colors; };
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = false;
+          home-manager.users.pokeeffe = import ./work.nix;
+        }
+      ];
+    };
+
+    # TODO Don't assume preston here now that we have two machines.
 
     # Expose the package set, including overlays, for convenience.
     packages."x86_64-darwin" = self.darwinConfigurations."preston".pkgs;
