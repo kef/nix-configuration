@@ -36,40 +36,36 @@
 
   # Build using: darwin-rebuild switch --flake .
   # Add --recreate-lock-file option to update all flake dependencies.
-  outputs = { self, nixpkgs, nix-darwin, home-manager, ls-colors, ... }: {
-    darwinConfigurations."preston" = nix-darwin.lib.darwinSystem {
-      system = "x86_64-darwin";
-      specialArgs = { inherit nixpkgs; };
-      modules = [
-        ./darwin-configuration-home.nix
-        home-manager.darwinModules.home-manager {
-          home-manager.extraSpecialArgs = { inherit ls-colors; };
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = false;
-          home-manager.users.kef = import ./home.nix;
-        }
-      ];
-    };
+  outputs = { self, nixpkgs, nix-darwin, home-manager, ls-colors, ... }:
+    let
+      darwinConfiguration = { location }:
+        nix-darwin.lib.darwinSystem {
+          system = "x86_64-darwin";
+          specialArgs = { inherit nixpkgs; };
+          modules = [
+            ./darwin-configuration-${location}.nix
+            home-manager.darwinModules.home-manager {
+              home-manager.extraSpecialArgs = { inherit ls-colors; };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = false;
+              home-manager.users.kef = import ./${location}.nix;
+            }
+          ];
+        };
+    in
+      {
+        darwinConfigurations."preston" = darwinConfiguration {
+          location = "home";
+        };
+        darwinConfigurations."A05392" = darwinConfiguration {
+          location = "work";
+        };
 
-    darwinConfigurations."A05392" = nix-darwin.lib.darwinSystem {
-      system = "x86_64-darwin";
-      specialArgs = { inherit nixpkgs; };
-      modules = [
-        ./darwin-configuration-work.nix
-        home-manager.darwinModules.home-manager {
-          home-manager.extraSpecialArgs = { inherit ls-colors; };
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = false;
-          home-manager.users.pokeeffe = import ./work.nix;
-        }
-      ];
-    };
+        # TODO Don't assume preston here now that we have two machines.
 
-    # TODO Don't assume preston here now that we have two machines.
+        # Expose the package set, including overlays, for convenience.
+        packages."x86_64-darwin" = self.darwinConfigurations."preston".pkgs;
 
-    # Expose the package set, including overlays, for convenience.
-    packages."x86_64-darwin" = self.darwinConfigurations."preston".pkgs;
-
-    homeConfigurations = self.darwinConfigurations."preston".config.home-manager.users;
-  };
+        homeConfigurations = self.darwinConfigurations."preston".config.home-manager.users;
+      };
 }
