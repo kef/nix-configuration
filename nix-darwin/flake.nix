@@ -38,7 +38,7 @@
   # Add --recreate-lock-file option to update all flake dependencies.
   outputs = { self, nixpkgs, nix-darwin, home-manager, ls-colors, ... }:
     let
-      darwinConfiguration = { location }:
+      darwinConfiguration = { location, user }:
         nix-darwin.lib.darwinSystem {
           system = "x86_64-darwin";
           specialArgs = { inherit nixpkgs; };
@@ -48,7 +48,7 @@
               home-manager.extraSpecialArgs = { inherit ls-colors; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = false;
-              home-manager.users.kef = import ./${location}.nix;
+              home-manager.users.${user} = import ./${location}.nix;
             }
           ];
         };
@@ -56,9 +56,11 @@
       {
         darwinConfigurations."preston" = darwinConfiguration {
           location = "home";
+          user = "kef";
         };
         darwinConfigurations."A05392" = darwinConfiguration {
           location = "work";
+          user = "pokeeffe";
         };
 
         # TODO Don't assume preston here now that we have two machines.
