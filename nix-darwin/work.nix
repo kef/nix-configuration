@@ -41,7 +41,8 @@ in
 
     ls-colors-pkg
 
-    yarn
+    nodejs-14_x
+    #yarn
 
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
