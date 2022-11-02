@@ -41,7 +41,7 @@ in
 
     ls-colors-pkg
 
-    nodejs-14_x
+#    nodejs-14_x
     #yarn
 
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
@@ -197,7 +197,7 @@ in
       vish = "vi $(find . -type f -print | xargs grep -l '^#\!/bin/bash')";
       rg1 = "rg --max-depth 1";
       m = "ssh moon";
-      n = "ssh nixos";
+#      n = "ssh nixos"; # Clashes with the n version manager for NodeJS.
       p = "ssh puff";
 
       # Git.
