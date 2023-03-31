@@ -18,6 +18,7 @@ in
     pstree
     htop
     dos2unix
+    gradle-completion
 
     #bat
     #exa
