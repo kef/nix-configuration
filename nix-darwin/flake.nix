@@ -34,9 +34,16 @@
     flake = false;
   };
 
+  inputs.atuin = {
+    type = "github";
+    owner = "ellie";
+    repo = "atuin";
+    ref = "main";
+  };
+
   # Build using: darwin-rebuild switch --flake .
   # Add --recreate-lock-file option to update all flake dependencies.
-  outputs = { self, nixpkgs, nix-darwin, home-manager, ls-colors, ... }:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, ls-colors, atuin, ... }:
     let
       darwinConfiguration = { location, user }:
         nix-darwin.lib.darwinSystem {
@@ -45,7 +52,7 @@
           modules = [
             ./darwin-configuration-${location}.nix
             home-manager.darwinModules.home-manager {
-              home-manager.extraSpecialArgs = { inherit ls-colors; };
+              home-manager.extraSpecialArgs = { inherit ls-colors atuin; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = false;
               home-manager.users.${user} = import ./${location}.nix;

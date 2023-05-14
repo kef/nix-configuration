@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ls-colors, ... }:
+{ config, lib, pkgs, ls-colors, atuin, ... }:
 
 let
   ls-colors-pkg = pkgs.runCommand "ls-colors-pkg" {} ''
@@ -42,6 +42,10 @@ in
     #};
 
     ls-colors-pkg
+
+    # TODO Remove explicit "x86_64-darwin" here.
+    bash-preexec
+    atuin.packages."x86_64-darwin".default
 
 #    nodejs-14_x
     #yarn

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ls-colors, ... }:
+{ config, lib, pkgs, ls-colors, atuin, ... }:
 
 let
   ls-colors-pkg = pkgs.runCommand "ls-colors-pkg" {} ''
@@ -39,6 +39,10 @@ in
     #};
 
     ls-colors-pkg
+
+    # TODO Remove explicit "x86_64-darwin" here.
+    bash-preexec
+    atuin.packages."x86_64-darwin".default
 
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
