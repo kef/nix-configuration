@@ -20,6 +20,7 @@ in
     dos2unix
     gradle-completion
     git-filter-repo
+    yq-go
 
     #bat
     #exa
