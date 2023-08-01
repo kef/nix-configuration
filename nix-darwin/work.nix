@@ -56,7 +56,7 @@ in
 
   programs.git = {
     enable = true;
-    userName = "pokeeffe";
+    userName = "Paul O'Keeffe";
     userEmail = "paul.okeeffe@autogeneral.com.au";
     aliases = {
       changes = "diff --name-status -r";
