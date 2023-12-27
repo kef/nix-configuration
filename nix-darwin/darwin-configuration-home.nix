@@ -13,12 +13,12 @@
 
   nix.registry.nixpkgs.flake = nixpkgs;
 
-  nix.distributedBuilds = true;
+  #nix.distributedBuilds = true;
 
-  nix.buildMachines = [
-    { hostName = "nixos"; system = "aarch64-linux"; }
-    { hostName = "moon"; system = "x86_64-linux"; }
-  ];
+  #nix.buildMachines = [
+  #  { hostName = "nixos"; system = "aarch64-linux"; }
+  #  { hostName = "moon"; system = "x86_64-linux"; }
+  #];
 
   # TODO Currently get an error due to a macOS bug in systemsetup -settimezone.
   # Set your time zone.
@@ -49,7 +49,7 @@
   };
 
   system.defaults.dock.autohide = true;
-  system.defaults.NSGlobalDomain.AppleFontSmoothing = 0;
+  #system.defaults.NSGlobalDomain.AppleFontSmoothing = 0;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
