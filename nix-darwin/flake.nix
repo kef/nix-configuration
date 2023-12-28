@@ -45,9 +45,9 @@
   # Add --recreate-lock-file option to update all flake dependencies.
   outputs = { self, nixpkgs, nix-darwin, home-manager, ls-colors, atuin, ... }:
     let
-      darwinConfiguration = { location, user }:
+      darwinConfiguration = { location, system, user }:
         nix-darwin.lib.darwinSystem {
-          system = "x86_64-darwin";
+          inherit system;
           specialArgs = { inherit nixpkgs; };
           modules = [
             ./darwin-configuration-${location}.nix
@@ -61,20 +61,27 @@
         };
     in
       {
+        darwinConfigurations."shave" = darwinConfiguration {
+          location = "home";
+          system = "aarch64-darwin";
+          user = "kef";
+        };
         darwinConfigurations."preston" = darwinConfiguration {
           location = "home";
+          system = "x86_64-darwin";
           user = "kef";
         };
         darwinConfigurations."A05392" = darwinConfiguration {
           location = "work";
+          system = "x86_64-darwin";
           user = "pokeeffe";
         };
 
-        # TODO Don't assume preston here now that we have two machines.
+        # TODO Don't assume shave here now that we have mulltiple machines.
 
         # Expose the package set, including overlays, for convenience.
-        packages."x86_64-darwin" = self.darwinConfigurations."preston".pkgs;
+        packages."aarch64-darwin" = self.darwinConfigurations."shave".pkgs;
 
-        homeConfigurations = self.darwinConfigurations."preston".config.home-manager.users;
+        homeConfigurations = self.darwinConfigurations."shave".config.home-manager.users;
       };
 }

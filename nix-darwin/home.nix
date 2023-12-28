@@ -40,9 +40,9 @@ in
 
     ls-colors-pkg
 
-    # TODO Remove explicit "x86_64-darwin" here.
+    # TODO Remove explicit "aarch64-darwin" here.
     bash-preexec
-    atuin.packages."x86_64-darwin".default
+    atuin.packages."aarch64-darwin".default
 
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
