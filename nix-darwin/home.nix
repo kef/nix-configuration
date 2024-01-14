@@ -44,6 +44,7 @@ in
     bash-preexec
     atuin.packages."aarch64-darwin".default
 
+    yarn-berry
     bun
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
