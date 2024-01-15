@@ -71,9 +71,6 @@
   # networking.firewall.enable = false;
 
   # TODO What unfree packages are there? Or should nixpkgs -> pkgs?
-  # nixpkgs.config = {
-  #   allowUnfree = true;
-  # };
 
 #  programs.git = {
     # might not work on stdenv.isDarwin

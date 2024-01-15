@@ -13,6 +13,10 @@
 
   nix.registry.nixpkgs.flake = nixpkgs;
 
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   # TODO Currently get an error due to a macOS bug in systemsetup -settimezone.
   # Set your time zone.
   time.timeZone = "Australia/Brisbane";
