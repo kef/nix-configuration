@@ -49,9 +49,9 @@ in
     bash-preexec
     atuin.packages."x86_64-darwin".default
 
-#    nodejs-14_x
-    #yarn
-
+    yarn-berry
+    bun
+    nodejs_21
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.git = {
@@ -187,7 +187,6 @@ in
       export LESS_TERMCAP_us=$'\e[1;4;31m';
 
       # TODO Phase out once all settings have been migrated to Nix.
-      # TODO Move .bashrc to .oldbashrc on work laptop.
       . ~/.oldbashrc
     '';
     shellAliases = {
