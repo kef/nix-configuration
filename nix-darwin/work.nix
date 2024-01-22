@@ -54,6 +54,7 @@ in
     nodejs_21
     terraform
     awscli2
+    glab
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.git = {
