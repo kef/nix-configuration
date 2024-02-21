@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ls-colors, atuin, ... }:
+{ config, lib, pkgs, ls-colors, ... }:
 
 let
   ls-colors-pkg = pkgs.runCommand "ls-colors-pkg" {} ''
@@ -45,9 +45,7 @@ in
 
     ls-colors-pkg
 
-    # TODO Remove explicit "x86_64-darwin" here.
     bash-preexec
-    atuin.packages."x86_64-darwin".default
 
     yarn-berry
     bun
@@ -56,6 +54,8 @@ in
     awscli2
     glab
     graphviz
+    trivy
+    atuin
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.git = {

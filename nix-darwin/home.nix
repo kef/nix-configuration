@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ls-colors, atuin, ... }:
+{ config, lib, pkgs, ls-colors, ... }:
 
 let
   ls-colors-pkg = pkgs.runCommand "ls-colors-pkg" {} ''
@@ -45,13 +45,12 @@ in
 
     ls-colors-pkg
 
-    # TODO Remove explicit "aarch64-darwin" here.
     bash-preexec
-    atuin.packages."aarch64-darwin".default
 
     yarn-berry
     bun
     nodejs_21
+    atuin
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.git = {
