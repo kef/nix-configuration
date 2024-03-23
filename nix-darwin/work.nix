@@ -55,7 +55,6 @@ in
     graphviz
     trivy
     atuin
-    pstree
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.git = {
