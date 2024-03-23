@@ -27,7 +27,6 @@ in
     #exa
     #fd
 
-    rnix-lsp
     nixpkgs-fmt
 
     # TODO Look into using nix-index.
@@ -56,6 +55,7 @@ in
     graphviz
     trivy
     atuin
+    pstree
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.git = {
