@@ -46,9 +46,7 @@ in
 
     bash-preexec
 
-    yarn-berry
     bun
-    nodejs_21
     terraform
     awscli2
     glab
