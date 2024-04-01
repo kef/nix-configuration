@@ -51,6 +51,8 @@
   system.defaults.dock.autohide = true;
   #system.defaults.NSGlobalDomain.AppleFontSmoothing = 0;
 
+  security.pam.enableSudoTouchIdAuth = true;
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;

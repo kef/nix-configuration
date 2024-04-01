@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-#darwin-rebuild switch --flake ~/work/personal/nix-configuration/nix-darwin
-darwin-rebuild switch --flake ~/work/personal/nix-configuration/nix-darwin --recreate-lock-file
+dir=$(dirname "$0")
+
+#darwin-rebuild switch --flake ${dir}
+darwin-rebuild switch --flake ${dir} --recreate-lock-file
