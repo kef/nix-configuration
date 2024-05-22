@@ -70,7 +70,7 @@
           user = "pokeeffe";
         };
 
-        # TODO Don't assume shave here now that we have mulltiple machines.
+    # TODO Don't assume shave here now that we have multiple machines.
 
         # Expose the package set, including overlays, for convenience.
         packages."aarch64-darwin" = self.darwinConfigurations."shave".pkgs;
