@@ -32,16 +32,6 @@ in
     # TODO Look into using nix-index.
     nix-index
 
-    # TODO Look into using direnv.
-    direnv
-    #direnv = {
-      #enable = true;
-      #nix-direnv = {
-        #enable = true;
-        #enableFlakes = true;
-      #};
-    #};
-
     ls-colors-pkg
 
     bash-preexec
@@ -50,7 +40,15 @@ in
     bun
     nodejs_21
     atuin
+    ruby
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
+
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    config.global.strict_env = true;
+    nix-direnv.enable = true;
+  };
 
   programs.git = {
     enable = true;
