@@ -38,7 +38,7 @@ in
 
     yarn-berry
     bun
-    nodejs_21
+#    nodejs_21
     atuin
     ruby
     inetutils
