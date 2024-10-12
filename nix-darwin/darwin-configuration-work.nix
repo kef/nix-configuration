@@ -38,7 +38,7 @@
   # programs.fish.enable = true;
   programs.bash.enable = true;
 
-  programs.bash.enableCompletion = true;
+  programs.bash.completion.enable = true;
 
   users.users.pokeeffe = {
     name = "pokeeffe";
