@@ -2,6 +2,7 @@
 { config, pkgs, nixpkgs, ... }:
 
 {
+  # TODO Remove repl-flake for nix 2.20 and above.
   nix.extraOptions = ''
     experimental-features = nix-command flakes repl-flake
   '';
