@@ -3,7 +3,7 @@
 
 {
   nix.extraOptions = ''
-    experimental-features = nix-command flakes
+    experimental-features = nix-command flakes repl-flake
   '';
 
   # Need to manage flake updates manually, since autoUpgrade not supported in nix-darwin.
