@@ -47,6 +47,7 @@ in
 # TODO Currently marked as broken in for macOS in nixpkgs.
 #    ghostty
 
+    ollama
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.direnv = {
