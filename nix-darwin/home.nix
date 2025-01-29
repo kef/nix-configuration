@@ -43,6 +43,10 @@ in
     ruby
     inetutils
     btop
+
+# TODO Currently marked as broken in for macOS in nixpkgs.
+#    ghostty
+
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.direnv = {
