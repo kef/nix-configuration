@@ -4,7 +4,14 @@
 {
   # TODO Remove repl-flake for nix 2.20 and above.
   nix.extraOptions = ''
-    experimental-features = nix-command flakes repl-flake
+    experimental-features = nix-command flakes
+
+    # Setup for darwin.linux-builder as per https://nixos.org/manual/nixpkgs/stable/#sec-darwin-builder.
+    extra-trusted-users = kef
+    builders = ssh-ng://builder@linux-builder aarch64-linux /etc/nix/builder_ed25519 4 - - - c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUpCV2N4Yi9CbGFxdDFhdU90RStGOFFVV3JVb3RpQzVxQkorVXVFV2RWQ2Igcm9vdEBuaXhvcwo=
+
+    # Not strictly necessary, but this will reduce your disk utilization.
+    builders-use-substitutes = true
   '';
 
   # Need to manage flake updates manually, since autoUpgrade not supported in nix-darwin.
