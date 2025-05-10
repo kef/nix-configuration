@@ -2,7 +2,6 @@
 { config, pkgs, nixpkgs, ... }:
 
 {
-  # TODO Remove repl-flake for nix 2.20 and above.
   nix.extraOptions = ''
     experimental-features = nix-command flakes
 
@@ -28,7 +27,6 @@
   #  { hostName = "moon"; system = "x86_64-linux"; }
   #];
 
-  # TODO Currently get an error due to a macOS bug in systemsetup -settimezone.
   # Set your time zone.
   time.timeZone = "Australia/Brisbane";
 
