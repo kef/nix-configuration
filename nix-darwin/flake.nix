@@ -34,8 +34,6 @@
     flake = false;
   };
 
-  # Build using: darwin-rebuild switch --flake .
-  # Add --recreate-lock-file option to update all flake dependencies.
   outputs = { self, nixpkgs, nix-darwin, home-manager, ls-colors, ... }:
     let
       darwinConfiguration = { location, system, user }:
