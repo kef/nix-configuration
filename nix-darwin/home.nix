@@ -23,10 +23,6 @@ in
     yq-go
     rbenv
 
-    #bat
-    #exa
-    #fd
-
     nixpkgs-fmt
 
     # TODO Look into using nix-index.
@@ -44,10 +40,15 @@ in
     inetutils
     btop
 
+    eza
+    bat
+    fd
+
 # TODO Currently marked as broken in for macOS in nixpkgs.
 #    ghostty
 
     ollama
+    uv
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.direnv = {
