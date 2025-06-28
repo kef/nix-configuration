@@ -23,10 +23,6 @@ in
     yq-go
     rbenv
 
-    #bat
-    #exa
-    #fd
-
     nixpkgs-fmt
 
     # TODO Look into using nix-index.
@@ -44,6 +40,12 @@ in
     trivy
     atuin
     ruby
+    inetutils
+    btop
+
+    eza
+    bat
+    fd
     unixtools.watch
     allure
     jfrog-cli

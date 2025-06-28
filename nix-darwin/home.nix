@@ -241,6 +241,7 @@ in
     };
   };
 
+  # TODO Incorporate .vimrc into this configuration. Not getting picked up.
   programs.neovim = {
     enable = true;
     vimAlias = true;
