@@ -49,6 +49,7 @@ in
     unixtools.watch
     allure
     jfrog-cli
+    duckdb
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.direnv = {
