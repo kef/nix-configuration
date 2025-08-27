@@ -2,6 +2,8 @@
 { config, pkgs, nixpkgs, ... }:
 
 {
+  ids.gids.nixbld = 350;
+
   nix.extraOptions = ''
     experimental-features = nix-command flakes
 
@@ -50,6 +52,8 @@
     name = "kef";
     home = "/Users/kef";
   };
+
+  system.primaryUser = "kef";
 
   system.defaults.dock.autohide = true;
   #system.defaults.NSGlobalDomain.AppleFontSmoothing = 0;
