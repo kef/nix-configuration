@@ -41,6 +41,8 @@
     home = "/Users/pokeeffe";
   };
 
+  system.primaryUser = "pokeeffe";
+
   system.defaults.dock.autohide = true;
   system.defaults.NSGlobalDomain.AppleFontSmoothing = 0;
 
