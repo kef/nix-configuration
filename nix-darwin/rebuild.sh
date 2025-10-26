@@ -3,4 +3,4 @@
 dir=$(dirname "$0")
 
 #nix flake update --flake "${dir}"
-darwin-rebuild switch --flake "${dir}"
+sudo darwin-rebuild switch --flake "${dir}"
