@@ -18,7 +18,10 @@ in
     pstree
     htop
     dos2unix
-    gradle-completion
+
+    # TODO Currently broken.
+#    gradle-completion
+
     git-filter-repo
     yq-go
     rbenv
@@ -62,52 +65,54 @@ in
 
   programs.git = {
     enable = true;
-    userName = "kef";
-    userEmail = "_@_";
-    aliases = {
-      changes = "diff --name-status -r";
-      st = "status";
-      ci = "commit";
-      co = "checkout";
-      di = "diff";
-      dc = "diff --cached";
-      aa = "add --all";
-      reb = "rebase";
-      br = "branch";
-      up = "pull --rebase";
-      pullff = "pull --ff-only";
-      merge = "merge --no-ff";
-      svnup = "svn fetch";
-      sup = "svn fetch";
-      svnci = "svn dcommit";
-      sci = "svn dcommit";
-      sreb = "svn rebase";
-      srt = "svn rebase remotes/trunk";
-      srebt = "svn rebase remotes/trunk";
-      unstage = "reset HEAD --";
-      last = "log -1 HEAD";
-      lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative";
-      stash-some = "stash save --patch";
-      put = "push origin HEAD";
-      push-all = "!for i in $(git config --list | grep -E ^remote\\..+\\.url | sed -E 's/^remote\\.(.*)\\.url=.*/\\1/'); do git push $i master; done";
-      amend = "commit --amend";
-      head = "!git l -1";
-      h = "!git head";
-      r = "!git l -20";
-      ra = "!git r --all";
-      ff = "merge --ff-only";
-      l = "log --graph --abbrev-commit --date=relative";
-      la = "!git l --all";
-      div = "divergence";
-      gn = "goodness";
-      gnc = "goodness --cached";
-      fa = "fetch --all";
-      pom = "push origin master";
-      uncommit = "reset --soft";
-      unadd = "reset --mixed";
-      undo = "reset --hard";
-    };
-    extraConfig = {
+    settings = {
+      user = {
+        name = "kef";
+        email = "_@_";
+      };
+      alias = {
+        changes = "diff --name-status -r";
+        st = "status";
+        ci = "commit";
+        co = "checkout";
+        di = "diff";
+        dc = "diff --cached";
+        aa = "add --all";
+        reb = "rebase";
+        br = "branch";
+        up = "pull --rebase";
+        pullff = "pull --ff-only";
+        merge = "merge --no-ff";
+        svnup = "svn fetch";
+        sup = "svn fetch";
+        svnci = "svn dcommit";
+        sci = "svn dcommit";
+        sreb = "svn rebase";
+        srt = "svn rebase remotes/trunk";
+        srebt = "svn rebase remotes/trunk";
+        unstage = "reset HEAD --";
+        last = "log -1 HEAD";
+        lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative";
+        stash-some = "stash save --patch";
+        put = "push origin HEAD";
+        push-all = "!for i in $(git config --list | grep -E ^remote\\..+\\.url | sed -E 's/^remote\\.(.*)\\.url=.*/\\1/'); do git push $i master; done";
+        amend = "commit --amend";
+        head = "!git l -1";
+        h = "!git head";
+        r = "!git l -20";
+        ra = "!git r --all";
+        ff = "merge --ff-only";
+        l = "log --graph --abbrev-commit --date=relative";
+        la = "!git l --all";
+        div = "divergence";
+        gn = "goodness";
+        gnc = "goodness --cached";
+        fa = "fetch --all";
+        pom = "push origin master";
+        uncommit = "reset --soft";
+        unadd = "reset --mixed";
+        undo = "reset --hard";
+      };
       apply = {
         whitespace = "nowarn";
       };
