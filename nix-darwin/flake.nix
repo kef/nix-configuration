@@ -62,6 +62,11 @@
           system = "x86_64-darwin";
           user = "kef";
         };
+        darwinConfigurations."A08758" = darwinConfiguration {
+          location = "work";
+          system = "aarch64-darwin";
+          user = "pokeeffe";
+        };
         darwinConfigurations."A05392" = darwinConfiguration {
           location = "work";
           system = "x86_64-darwin";

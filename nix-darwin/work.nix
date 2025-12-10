@@ -18,7 +18,7 @@ in
     pstree
     htop
     dos2unix
-    gradle-completion
+#    gradle-completion
     git-filter-repo
     yq-go
     rbenv

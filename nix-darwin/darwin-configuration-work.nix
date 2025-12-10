@@ -2,13 +2,16 @@
 { config, pkgs, nixpkgs, ... }:
 
 {
+  # Turn off nix-darwin's nix management which conflicts with Determinate Nix's facilities to do the same thing.
+  nix.enable = false;
+
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
 
   # Need to manage flake updates manually, since autoUpgrade not supported in nix-darwin.
 
-  nix.gc.automatic = true;
+  #nix.gc.automatic = true;
   #nix.gc.user = kef; # or root?
 
   nix.registry.nixpkgs.flake = nixpkgs;
