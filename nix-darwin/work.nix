@@ -62,8 +62,12 @@ in
 
   programs.k9s.enable = true;
   programs.lazydocker.enable = true;
-  programs.lazygit.enable = true;
   programs.lazysql.enable = true;
+
+  programs.lazygit = {
+    enable = true;
+    enableBashIntegration = true;
+  };
 
   programs.direnv = {
     enable = true;
