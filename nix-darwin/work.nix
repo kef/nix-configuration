@@ -54,9 +54,16 @@ in
     jfrog-cli
     duckdb
     fnm
+
+# TODO No Nix package yet.
+#    taws
+
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.k9s.enable = true;
+  programs.lazydocker.enable = true;
+  programs.lazygit.enable = true;
+  programs.lazysql.enable = true;
 
   programs.direnv = {
     enable = true;
