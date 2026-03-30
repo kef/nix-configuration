@@ -55,6 +55,8 @@ in
     duckdb
     fnm
 
+    github-copilot-cli
+
 # TODO No Nix package yet.
 #    taws
 
