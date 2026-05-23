@@ -50,13 +50,17 @@ in
 # TODO Currently marked as broken in for macOS in nixpkgs.
 #    ghostty
 
-    ollama
     uv
     ffmpeg-full
     jbang
     nh
     witr
     iproute2mac
+    goose-cli
+
+    # Convert to home manager options (check other packages above).
+    ollama
+
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.direnv = {
