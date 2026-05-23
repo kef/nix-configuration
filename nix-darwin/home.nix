@@ -18,10 +18,7 @@ in
     pstree
     htop
     dos2unix
-
-    # TODO Currently broken.
-#    gradle-completion
-
+    gradle-completion
     git-filter-repo
     yq-go
     rbenv
