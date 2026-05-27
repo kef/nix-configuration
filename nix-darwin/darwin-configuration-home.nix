@@ -29,6 +29,10 @@
   #  { hostName = "moon"; system = "x86_64-linux"; }
   #];
 
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   # Set your time zone.
   time.timeZone = "Australia/Brisbane";
 

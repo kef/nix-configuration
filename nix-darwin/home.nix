@@ -35,6 +35,10 @@ in
     yarn-berry
     bun
 #    nodejs_21
+    terraform
+    awscli2
+    glab
+    graphviz
     atuin
     ruby
     inetutils
@@ -43,6 +47,12 @@ in
     eza
     bat
     fd
+    unixtools.watch
+    allure
+    duckdb
+    fnm
+
+    github-copilot-cli
 
 # TODO Currently marked as broken in for macOS in nixpkgs.
 #    ghostty
