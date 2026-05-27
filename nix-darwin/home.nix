@@ -58,6 +58,7 @@ in
     # Convert to home manager options (check other packages above).
     ollama
 
+    just
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.direnv = {
