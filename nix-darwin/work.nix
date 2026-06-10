@@ -60,6 +60,7 @@ in
 # TODO No Nix package yet.
 #    taws
 
+    jbang
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
   programs.k9s.enable = true;
