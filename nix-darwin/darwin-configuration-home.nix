@@ -1,4 +1,3 @@
-#{ config, pkgs, nixpkgs, home-manager, ... }:
 { config, pkgs, nixpkgs, ... }:
 
 {
