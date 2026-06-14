@@ -63,6 +63,26 @@
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  homebrew = {
+    enable = true;
+
+    # TODO Do we need these or is nix-homebrew management enough?
+    # onActivation.cleanup = "uninstall"; # Or "check". Stick with default of "none" for now, as I have apps not controlled by Nix.
+    # global.autoUpdate = false;
+    # onActivation.autoUpdate = false; # Default.
+    # onActivation.upgrade = true;
+
+    enableBashIntegration = true;
+
+    casks = [
+      "llamabarn"
+    ];
+
+#    masApps = {
+#      Tailscale = 1475387142; # App Store URL id
+#    };
+  };
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
