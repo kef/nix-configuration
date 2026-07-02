@@ -66,16 +66,18 @@
   homebrew = {
     enable = true;
 
-    # TODO Do we need these or is nix-homebrew management enough?
-    # onActivation.cleanup = "uninstall"; # Or "check". Stick with default of "none" for now, as I have apps not controlled by Nix.
-    # global.autoUpdate = false;
-    # onActivation.autoUpdate = false; # Default.
-    # onActivation.upgrade = true;
+    onActivation = {
+#      cleanup = "check"; # Or "uninstall" or "zap".
+      autoUpdate = false; # Default.
+#      upgrade = true;
+    };
+
+    global.autoUpdate = false;
 
     enableBashIntegration = true;
 
     casks = [
-      "llamabarn"
+      "llamabarn" # Self-updates.
     ];
 
 #    masApps = {
@@ -83,6 +85,7 @@
 #    };
   };
 
+  # TODO Upgrade incrementally to 7 (current).
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
