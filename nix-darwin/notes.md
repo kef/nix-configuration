@@ -19,7 +19,6 @@ Notes
     - bash_completion.d/*
   - known problem with nix-homebrew
 
-- show nix-darwin changelog using `darwin-rebuild --flake . changelog`
 - darwin-option doesn't work with flakes
   - https://github.com/nix-darwin/nix-darwin/issues/277
 
