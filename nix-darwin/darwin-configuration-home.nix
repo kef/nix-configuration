@@ -75,7 +75,7 @@
     enableBashIntegration = true;
 
     casks = [
-      "llamabarn" # Self-updates.
+      "llama-app" # Self-updates.
     ];
 
 #    masApps = {
