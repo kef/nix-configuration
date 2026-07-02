@@ -83,8 +83,7 @@
 #    };
   };
 
-  # TODO Upgrade incrementally to 7 (current).
   # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 6;
+  # $ ./changelog.sh
+  system.stateVersion = 7;
 }
