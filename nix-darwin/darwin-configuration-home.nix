@@ -1,8 +1,6 @@
 { config, pkgs, nixpkgs, ... }:
 
 {
-  ids.gids.nixbld = 350;
-
   nix.extraOptions = ''
     experimental-features = nix-command flakes
 
@@ -88,5 +86,5 @@
   # TODO Upgrade incrementally to 7 (current).
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  system.stateVersion = 5;
 }
