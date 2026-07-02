@@ -67,7 +67,7 @@
     enable = true;
 
     onActivation = {
-#      cleanup = "check"; # Or "uninstall" or "zap".
+      cleanup = "check"; # Or "uninstall" or "zap".
       autoUpdate = false;
       upgrade = false;
     };
