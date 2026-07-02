@@ -68,8 +68,8 @@
 
     onActivation = {
 #      cleanup = "check"; # Or "uninstall" or "zap".
-      autoUpdate = false; # Default.
-#      upgrade = true;
+      autoUpdate = false;
+      upgrade = false;
     };
 
     global.autoUpdate = false;
