@@ -1,24 +1,31 @@
 { config, pkgs, nixpkgs, ... }:
 
 {
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
+  # Turn off nix-darwin's nix management which conflicts with Determinate Nix's facilities to do the same thing.
+  nix.enable = false;
 
-    # Setup for darwin.linux-builder as per https://nixos.org/manual/nixpkgs/stable/#sec-darwin-builder.
-    extra-trusted-users = kef
-    builders = ssh-ng://builder@linux-builder aarch64-linux /etc/nix/builder_ed25519 4 - - - c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUpCV2N4Yi9CbGFxdDFhdU90RStGOFFVV3JVb3RpQzVxQkorVXVFV2RWQ2Igcm9vdEBuaXhvcwo=
-
-    # Not strictly necessary, but this will reduce your disk utilization.
-    builders-use-substitutes = true
-  '';
+  # TODO These nix.* options are incompatible with Determinate Nix which manages the Nix installation itself instead
+  #      of nix-darwin.
+#  nix.extraOptions = ''
+#    experimental-features = nix-command flakes
+#
+#    # Setup for darwin.linux-builder as per https://nixos.org/manual/nixpkgs/stable/#sec-darwin-builder.
+#    extra-trusted-users = kef
+#    builders = ssh-ng://builder@linux-builder aarch64-linux /etc/nix/builder_ed25519 4 - - - c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUpCV2N4Yi9CbGFxdDFhdU90RStGOFFVV3JVb3RpQzVxQkorVXVFV2RWQ2Igcm9vdEBuaXhvcwo=
+#
+#    # Not strictly necessary, but this will reduce your disk utilization.
+#    builders-use-substitutes = true
+#  '';
 
   # Need to manage flake updates manually, since autoUpgrade not supported in nix-darwin.
 
-  nix.gc.automatic = true;
+  #nix.gc.automatic = true;
   #nix.gc.user = kef; # or root?
 
   nix.registry.nixpkgs.flake = nixpkgs;
 
+  # TODO These nix.* options are incompatible with Determinate Nix which manages the Nix installation itself instead
+  #      of nix-darwin.
   #nix.distributedBuilds = true;
 
   #nix.buildMachines = [
@@ -49,6 +56,7 @@
 
   programs.bash.completion.enable = true;
 
+  # TODO Pass in user name as an argument.
   users.users.kef = {
     name = "kef";
     home = "/Users/kef";
@@ -57,6 +65,8 @@
   system.primaryUser = "kef";
 
   system.defaults.dock.autohide = true;
+
+  # TODO This was uncommented for my work laptop.
   #system.defaults.NSGlobalDomain.AppleFontSmoothing = 0;
 
   security.pam.services.sudo_local.touchIdAuth = true;
