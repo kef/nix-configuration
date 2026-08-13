@@ -22,6 +22,7 @@
   #nix.gc.automatic = true;
   #nix.gc.user = kef; # or root?
 
+  # TODO Does this work with Determinate Nix?
   nix.registry.nixpkgs.flake = nixpkgs;
 
   # TODO These nix.* options are incompatible with Determinate Nix which manages the Nix installation itself instead
