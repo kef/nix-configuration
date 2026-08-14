@@ -106,6 +106,7 @@
         # Expose the package set, including overlays, for convenience.
         packages."aarch64-darwin" = self.darwinConfigurations."shave".pkgs;
 
-        homeConfigurations = self.darwinConfigurations."shave".config.home-manager.users;
+        # TODO Attempt to get home-manager news command to work. See news.sh.
+#        homeConfigurations = self.darwinConfigurations."shave".config.home-manager.users;
       };
 }
