@@ -101,10 +101,20 @@
 #          user = "pokeeffe";
 #        };
 
-        # TODO Don't assume shave here now that we have multiple machines.
+        # TODO Don't assume shave in these attributes as we have multiple machines.
 
-       # TODO When uncommented, nix flake check was failing with:
-        #      error: flake attribute 'packages.aarch64-darwin.system' is not a derivation
+        # TODO Making the entirety of Nixpkgs part of an output seems inadvisable. What do others do?
+        # TODO When uncommented, nix flake show/check commands process a lot of packages and then fail with:
+#        error:
+#               … while calling the 'throw' builtin
+#                 at «github:NixOS/nixpkgs/b5aa0fb»/pkgs/top-level/all-packages.nix:160:36:
+#                  159|   ### Evaluating the entire Nixpkgs naively will likely fail, make failure fast
+#                  160|   AAAAAASomeThingsFailToEvaluate = throw ''
+#                     |                                    ^
+#                  161|     This pseudo-package is likely not the only part of Nixpkgs that fails to evaluate.
+#
+#               error: This pseudo-package is likely not the only part of Nixpkgs that fails to evaluate.
+#               You should not evaluate entire Nixpkgs without measures to handle failing packages.
         # Expose the package set, including overlays, for convenience.
 #        packages."aarch64-darwin" = self.darwinConfigurations."shave".pkgs;
 
