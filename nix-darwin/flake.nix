@@ -87,16 +87,19 @@
           system = "x86_64-darwin";
           user = "kef";
         };
-        darwinConfigurations."A08758" = darwinConfiguration {
-          location = "work";
-          system = "aarch64-darwin";
-          user = "pokeeffe";
-        };
-        darwinConfigurations."A05392" = darwinConfiguration {
-          location = "work";
-          system = "x86_64-darwin";
-          user = "pokeeffe";
-        };
+
+# Work laptop configurations are no longer being maintained.
+#
+#        darwinConfigurations."A08758" = darwinConfiguration {
+#          location = "work";
+#          system = "aarch64-darwin";
+#          user = "pokeeffe";
+#        };
+#        darwinConfigurations."A05392" = darwinConfiguration {
+#          location = "work";
+#          system = "x86_64-darwin";
+#          user = "pokeeffe";
+#        };
 
         # TODO Don't assume shave here now that we have multiple machines.
 
