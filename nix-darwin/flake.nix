@@ -108,7 +108,17 @@
         # Expose the package set, including overlays, for convenience.
 #        packages."aarch64-darwin" = self.darwinConfigurations."shave".pkgs;
 
-        # TODO Attempt to get home-manager news command to work. See news.sh.
+        # TODO Attempt to get home-manager news command to work. See error in news.sh.
+        # TODO However, uncommenting fails nix flake show/check with:
+#        error:
+#               … while evaluating an attribute for caching
+#
+#               error: attribute 'activationPackage' missing
+#               at «builtin-flake-schemas»/flake.nix:358:30:
+#                  357|               derivationAttrPath = [ "activationPackage" ];
+#                  358|               forSystems = [ this.activationPackage.system ];
+#                     |                              ^
+#                  359|             }) output
 #        homeConfigurations = self.darwinConfigurations."shave".config.home-manager.users;
       };
 }
