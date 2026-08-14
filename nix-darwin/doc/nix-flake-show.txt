@@ -1,5 +1,4 @@
 ~/r/work/nix-configuration/nix-darwin(master) $ nix flake show
-warning: Git tree '/Users/kef/r/work/nix-configuration' has uncommitted changes
 evaluation warning: Nixpkgs 26.05 will be the last release to support x86_64-darwin; see https://nixos.org/manual/nixpkgs/unstable/release-notes#x86_64-darwin-26.05
 git+file:///Users/kef/r/work/nix-configuration?dir=nix-darwin
 └───darwinConfigurations

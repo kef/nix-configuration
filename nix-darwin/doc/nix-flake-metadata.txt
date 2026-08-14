@@ -1,5 +1,4 @@
 ~/r/work/nix-configuration/nix-darwin(master) $ nix flake metadata
-warning: Git tree '/Users/kef/r/work/nix-configuration' has uncommitted changes
 Resolved URL:  git+file:///Users/kef/r/work/nix-configuration?dir=nix-darwin
 Description:   nix-darwin system flake
 Revision:      b093d7e6c02d8fcd65b8841f42402830ea5c795c-dirty
