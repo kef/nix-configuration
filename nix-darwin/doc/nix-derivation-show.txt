@@ -1,0 +1,3 @@
+~/r/work/nix-configuration/nix-darwin(master) $ nix derivation show
+warning: Git tree '/Users/kef/r/work/nix-configuration' has uncommitted changes
+error: flake 'git+file:///Users/kef/r/work/nix-configuration?dir=nix-darwin' does not provide attribute 'packages.aarch64-darwin.default' or 'defaultPackage.aarch64-darwin'

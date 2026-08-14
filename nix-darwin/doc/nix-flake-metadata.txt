@@ -1,0 +1,18 @@
+~/r/work/nix-configuration/nix-darwin(master) $ nix flake metadata
+warning: Git tree '/Users/kef/r/work/nix-configuration' has uncommitted changes
+Resolved URL:  git+file:///Users/kef/r/work/nix-configuration?dir=nix-darwin
+Description:   nix-darwin system flake
+Revision:      b093d7e6c02d8fcd65b8841f42402830ea5c795c-dirty
+Last modified: 2026-08-13 16:37:04
+Fingerprint:   e6f457e5ebe5cd3d5a2cf963c1f89f468c04e450cc89ed30861475e5a028057e
+Inputs:
+├───home-manager: github:nix-community/home-manager/74b3817 (2026-07-01 20:07:43)
+│   └───nixpkgs follows input 'nixpkgs'
+├───homebrew-cask: github:homebrew/homebrew-cask/da6886d (2026-07-02 02:39:32)
+├───homebrew-core: github:homebrew/homebrew-core/d41ee61 (2026-07-02 03:18:20)
+├───ls-colors: github:trapd00r/LS_COLORS/810ce8c (2025-06-06 14:23:09)
+├───nix-darwin: github:LnL7/nix-darwin/a1fa429 (2026-06-18 05:49:52)
+│   └───nixpkgs follows input 'nixpkgs'
+├───nix-homebrew: github:zhaofengli/nix-homebrew/de7953a (2026-06-13 22:20:46)
+│   └───brew-src: github:Homebrew/brew/109191b (2026-06-12 01:00:06)
+└───nixpkgs: github:NixOS/nixpkgs/b5aa0fb (2026-06-29 09:01:53)

@@ -1,0 +1,11 @@
+~/r/work/nix-configuration/nix-darwin(master) $ nix config check
+[PASS] PATH contains only one nix version.
+[FAIL] Found profiles outside of "/nix/var/nix"/profiles.
+The generation this profile points to might not have a gcroot and could be
+garbage collected, resulting in broken symlinks.
+
+  "/Users/kef/.nix-profile/bin"
+
+
+[PASS] Client protocol matches store protocol.
+[INFO] You are not trusted by store uri: daemon
