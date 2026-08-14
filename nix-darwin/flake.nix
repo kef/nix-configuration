@@ -103,8 +103,10 @@
 
         # TODO Don't assume shave here now that we have multiple machines.
 
+       # TODO When uncommented, nix flake check was failing with:
+        #      error: flake attribute 'packages.aarch64-darwin.system' is not a derivation
         # Expose the package set, including overlays, for convenience.
-        packages."aarch64-darwin" = self.darwinConfigurations."shave".pkgs;
+#        packages."aarch64-darwin" = self.darwinConfigurations."shave".pkgs;
 
         # TODO Attempt to get home-manager news command to work. See news.sh.
 #        homeConfigurations = self.darwinConfigurations."shave".config.home-manager.users;

@@ -1,0 +1,6 @@
+~/r/work/nix-configuration/nix-darwin(master) $ nix flake check
+warning: Git tree '/Users/kef/r/work/nix-configuration' has uncommitted changes
+evaluation warning: Nixpkgs 26.05 will be the last release to support x86_64-darwin; see https://nixos.org/manual/nixpkgs/unstable/release-notes#x86_64-darwin-26.05
+✅ darwinConfigurations.shave (build skipped)
+warning: The check omitted these incompatible systems: x86_64-darwin
+Use '--all-systems' to check all.
