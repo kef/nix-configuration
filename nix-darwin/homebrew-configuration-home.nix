@@ -1,11 +1,11 @@
-{ homebrew-core, homebrew-cask, ... }:
+{ system, homebrew-core, homebrew-cask, ... }:
 
 {
   # Install Homebrew under the default prefix
   enable = true;
 
   # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-  enableRosetta = true;
+  enableRosetta = system == "aarch64-darwin";
 
   # User owning the Homebrew prefix
   user = "kef";

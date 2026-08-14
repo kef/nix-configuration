@@ -64,6 +64,7 @@
             }
             nix-homebrew.darwinModules.nix-homebrew {
               nix-homebrew = import ./homebrew-configuration-${location}.nix {
+                inherit system;
                 inherit homebrew-core;
                 inherit homebrew-cask;
               };
