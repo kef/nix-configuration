@@ -1,0 +1,29 @@
+~/r/work/nix-configuration/nix-darwin(master) $ nix flake show --drv-names --drv-paths --json --output-paths --legacy
+{
+  "inventory": {
+    "darwinConfigurations": {
+      "doc": "The `darwinConfigurations` flake output defines [nix-darwin configurations](https://github.com/nix-darwin/nix-darwin).\n",
+      "output": {
+        "children": {
+          "preston": {
+            "filtered": true
+          },
+          "shave": {
+            "derivation": {
+              "name": "darwin-system-26.11.a1fa429",
+              "outputs": {
+                "out": "/nix/store/79mssn38xwfhmrxkcqplcmag9ivk45c9-darwin-system-26.11.a1fa429"
+              },
+              "path": "/nix/store/jsbp6igslmdd3ampfvm76c3rm3brn6rz-darwin-system-26.11.a1fa429.drv"
+            },
+            "forSystems": [
+              "aarch64-darwin"
+            ],
+            "what": "nix-darwin configuration"
+          }
+        }
+      }
+    }
+  },
+  "version": 2
+}
