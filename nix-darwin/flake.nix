@@ -130,5 +130,9 @@
 #                     |                              ^
 #                  359|             }) output
 #        homeConfigurations = self.darwinConfigurations."shave".config.home-manager.users;
+#        homeConfigurations = self.darwinConfigurations."shave".config.home-manager.users.kef.home;
+
+        homeConfigurations."kef".config.news.json.output = self.darwinConfigurations.shave.config.home-manager.users.kef.news.json.output;
+        homeConfigurations."kef".activationPackage = self.darwinConfigurations.shave.config.home-manager.users.kef.home.activationPackage;
       };
 }
