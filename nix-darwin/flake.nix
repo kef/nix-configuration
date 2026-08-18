@@ -58,7 +58,7 @@
             inherit user;
           };
           modules = [
-            ./darwin-configuration-${location}.nix
+            ./darwin-configuration.nix
             home-manager.darwinModules.home-manager {
               home-manager.extraSpecialArgs = {
                 inherit ls-colors;
