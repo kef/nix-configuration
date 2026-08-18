@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ls-colors, ... }:
+{ config, lib, pkgs, ls-colors, user, ... }:
 
 let
   ls-colors-pkg = pkgs.runCommand "ls-colors-pkg" {} ''

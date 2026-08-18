@@ -60,7 +60,10 @@
           modules = [
             ./darwin-configuration-${location}.nix
             home-manager.darwinModules.home-manager {
-              home-manager.extraSpecialArgs = { inherit ls-colors; };
+              home-manager.extraSpecialArgs = {
+                inherit ls-colors;
+                inherit user;
+              };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = false;
               home-manager.users.${user} = import ./home-manager/${location}.nix;
