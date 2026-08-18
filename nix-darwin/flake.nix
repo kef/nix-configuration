@@ -53,7 +53,10 @@
       darwinConfiguration = { location, system, user }:
         nix-darwin.lib.darwinSystem {
           inherit system;
-          specialArgs = { inherit nixpkgs; };
+          specialArgs = {
+            inherit nixpkgs;
+            inherit user;
+          };
           modules = [
             ./darwin-configuration-${location}.nix
             home-manager.darwinModules.home-manager {

@@ -4,6 +4,7 @@
   - with flakes?
   - as a nix-darwin module?
   - both?
+  - applied workaround to set required attributes
 
 - merge old work laptop configuration into home laptop configuration
 

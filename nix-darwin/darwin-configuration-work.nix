@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, ... }:
+{ config, pkgs, nixpkgs, user, ... }:
 
 {
   # Turn off nix-darwin's nix management which conflicts with Determinate Nix's facilities to do the same thing.
@@ -11,7 +11,7 @@
   # Need to manage flake updates manually, since autoUpgrade not supported in nix-darwin.
 
   #nix.gc.automatic = true;
-  #nix.gc.user = kef; # or root?
+  #nix.gc.user = user; # or root?
 
   nix.registry.nixpkgs.flake = nixpkgs;
 
@@ -38,12 +38,12 @@
 
   programs.bash.completion.enable = true;
 
-  users.users.pokeeffe = {
-    name = "pokeeffe";
-    home = "/Users/pokeeffe";
+  users.users.${user} = {
+    name = user;
+    home = "/Users/${user}";
   };
 
-  system.primaryUser = "pokeeffe";
+  system.primaryUser = user;
 
   system.defaults.dock.autohide = true;
   system.defaults.NSGlobalDomain.AppleFontSmoothing = 0;

@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, ... }:
+{ config, pkgs, nixpkgs, user, ... }:
 
 {
   # Turn off nix-darwin's nix management which conflicts with Determinate Nix's facilities to do the same thing.
@@ -10,7 +10,7 @@
 #    experimental-features = nix-command flakes
 #
 #    # Setup for darwin.linux-builder as per https://nixos.org/manual/nixpkgs/stable/#sec-darwin-builder.
-#    extra-trusted-users = kef
+#    extra-trusted-users = user
 #    builders = ssh-ng://builder@linux-builder aarch64-linux /etc/nix/builder_ed25519 4 - - - c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUpCV2N4Yi9CbGFxdDFhdU90RStGOFFVV3JVb3RpQzVxQkorVXVFV2RWQ2Igcm9vdEBuaXhvcwo=
 #
 #    # Not strictly necessary, but this will reduce your disk utilization.
@@ -20,7 +20,7 @@
   # Need to manage flake updates manually, since autoUpgrade not supported in nix-darwin.
 
   #nix.gc.automatic = true;
-  #nix.gc.user = kef; # or root?
+  #nix.gc.user = user; # or root?
 
   # TODO Does this work with Determinate Nix?
   nix.registry.nixpkgs.flake = nixpkgs;
@@ -57,13 +57,12 @@
 
   programs.bash.completion.enable = true;
 
-  # TODO Pass in user name as an argument.
-  users.users.kef = {
-    name = "kef";
-    home = "/Users/kef";
+  users.users.${user} = {
+    name = user;
+    home = "/Users/${user}";
   };
 
-  system.primaryUser = "kef";
+  system.primaryUser = user;
 
   system.defaults.dock.autohide = true;
 
