@@ -6,8 +6,6 @@
   - both?
   - applied workaround to set required attributes
 
-- merge old work laptop configuration into home laptop configuration
-
 - darwin-option doesn't work with flakes
   - https://github.com/nix-darwin/nix-darwin/issues/277
 
@@ -38,3 +36,7 @@
     - this will set up a permanently running builder virtual machine
   - now have the Linux builder from Determine Nix instead
     - uses macOS Virtualisation framework
+
+# Done
+
+- merge old work laptop configuration into home laptop configuration
