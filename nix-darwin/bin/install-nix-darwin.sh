@@ -6,4 +6,6 @@ dir=$(dirname "$0")
 
 # Install nix-darwin on a fresh Nix installation.
 sudo nix build .#darwinConfigurations.shave.system
-sudo ./result/sw/bin/darwin-rebuild switch --flake .
+sudo ./result/sw/bin/darwin-rebuild switch --flake "${dir}"
+
+# TODO Clean up result subdirectory.
