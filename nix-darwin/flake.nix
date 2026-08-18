@@ -54,16 +54,14 @@
         nix-darwin.lib.darwinSystem {
           inherit system;
           specialArgs = {
-            inherit nixpkgs;
-            inherit user;
+            inherit nixpkgs user;
           };
           modules = [
             ./common.nix
             home-manager.darwinModules.home-manager {
               home-manager = {
                 extraSpecialArgs = {
-                  inherit ls-colors;
-                  inherit user;
+                  inherit ls-colors user;
                 };
                 useGlobalPkgs = true;
                 useUserPackages = false;
@@ -72,10 +70,7 @@
             }
             nix-homebrew.darwinModules.nix-homebrew {
               nix-homebrew = import ./nix-homebrew/common.nix {
-                inherit system;
-                inherit homebrew-core;
-                inherit homebrew-cask;
-                inherit user;
+                inherit system homebrew-core homebrew-cask user;
               };
             }
             # Optional: Align homebrew taps config with nix-homebrew
