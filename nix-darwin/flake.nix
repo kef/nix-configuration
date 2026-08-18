@@ -63,7 +63,7 @@
               home-manager.users.${user} = import ./${location}.nix;
             }
             nix-homebrew.darwinModules.nix-homebrew {
-              nix-homebrew = import ./homebrew-configuration-${location}.nix {
+              nix-homebrew = import ./nix-homebrew/homebrew-configuration-${location}.nix {
                 inherit system;
                 inherit homebrew-core;
                 inherit homebrew-cask;
