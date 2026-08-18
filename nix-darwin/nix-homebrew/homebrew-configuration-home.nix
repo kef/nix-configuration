@@ -1,4 +1,4 @@
-{ system, homebrew-core, homebrew-cask, ... }:
+{ system, homebrew-core, homebrew-cask, user, ... }:
 
 {
   # Install Homebrew under the default prefix
@@ -8,7 +8,7 @@
   enableRosetta = system == "aarch64-darwin";
 
   # User owning the Homebrew prefix
-  user = "kef";
+  inherit user;
 
   # Optional: Declarative tap management
   taps = {

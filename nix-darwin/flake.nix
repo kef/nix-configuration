@@ -73,6 +73,7 @@
                 inherit system;
                 inherit homebrew-core;
                 inherit homebrew-cask;
+                inherit user;
               };
             }
             # Optional: Align homebrew taps config with nix-homebrew
