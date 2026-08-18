@@ -60,7 +60,7 @@
               home-manager.extraSpecialArgs = { inherit ls-colors; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = false;
-              home-manager.users.${user} = import ./${location}.nix;
+              home-manager.users.${user} = import ./home-manager/${location}.nix;
             }
             nix-homebrew.darwinModules.nix-homebrew {
               nix-homebrew = import ./nix-homebrew/homebrew-configuration-${location}.nix {
