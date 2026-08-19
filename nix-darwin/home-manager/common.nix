@@ -108,6 +108,9 @@ in
       # TODO Phase out once all settings have been migrated to Nix.
       . ~/.oldbashrc
     '';
+    sessionVariables = {
+      DISPLAY = ":0.0";
+    };
     shellAliases = {
 
       # General.
