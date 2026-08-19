@@ -286,6 +286,7 @@ in
   # TODO Incorporate .vimrc into this configuration. Not getting picked up.
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
     vimAlias = true;
     extraConfig = "colorscheme gruvbox";
     plugins = with pkgs.vimPlugins; [
