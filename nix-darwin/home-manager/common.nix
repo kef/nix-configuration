@@ -294,16 +294,21 @@ in
     ];
   };
 
-  programs.nix-index.enable = true;
-  programs.nix-index.enableBashIntegration = true;
+  programs.nix-index = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
   programs.command-not-found.enable = false;
 
-  programs.readline.enable = true;
-  programs.readline.variables = {
-    show-all-if-ambiguous = "On";
-  };
-  programs.readline.bindings = {
-    "\\ep" = "history-search-backward";
+  programs.readline = {
+    enable = true;
+    variables = {
+      show-all-if-ambiguous = "On";
+    };
+    bindings = {
+      "\\ep" = "history-search-backward";
+    };
   };
 
   # Let Home Manager install and manage itself.
