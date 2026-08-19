@@ -84,258 +84,260 @@ in
     rsync
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
-  programs.bash = {
-    enable = true;
+  programs = {
+    bash = {
+      enable = true;
 
-    # LESS_TERMCAP variables are set here because home-manager sessionVariables
-    # values are surrounded by double quotes, which defeats the shell quoting of
-    # escape characters.
-    bashrcExtra = ''
-      unset NIX_PATH
+      # LESS_TERMCAP variables are set here because home-manager sessionVariables
+      # values are surrounded by double quotes, which defeats the shell quoting of
+      # escape characters.
+      bashrcExtra = ''
+        unset NIX_PATH
 
-      eval $(dircolors ~/.nix-profile/share/LS_COLORS)
+        eval $(dircolors ~/.nix-profile/share/LS_COLORS)
 
-      export JAVA_HOME=$(/usr/libexec/java_home -v 26)
+        export JAVA_HOME=$(/usr/libexec/java_home -v 26)
 
-      export LESS_TERMCAP_mb=$'\e[1;32m';
-      export LESS_TERMCAP_md=$'\e[1;32m';
-      export LESS_TERMCAP_me=$'\e[0m';
-      export LESS_TERMCAP_se=$'\e[0m';
-      export LESS_TERMCAP_so=$'\e[01;33m';
-      export LESS_TERMCAP_ue=$'\e[0m';
-      export LESS_TERMCAP_us=$'\e[1;4;31m';
+        export LESS_TERMCAP_mb=$'\e[1;32m';
+        export LESS_TERMCAP_md=$'\e[1;32m';
+        export LESS_TERMCAP_me=$'\e[0m';
+        export LESS_TERMCAP_se=$'\e[0m';
+        export LESS_TERMCAP_so=$'\e[01;33m';
+        export LESS_TERMCAP_ue=$'\e[0m';
+        export LESS_TERMCAP_us=$'\e[1;4;31m';
 
-      # TODO Phase out once all settings have been migrated to Nix.
-      . ~/.oldbashrc
-    '';
-    sessionVariables = {
-      DISPLAY = ":0.0";
+        # TODO Phase out once all settings have been migrated to Nix.
+        . ~/.oldbashrc
+      '';
+      sessionVariables = {
+        DISPLAY = ":0.0";
 
-#      ARCHFLAGS = "-arch x86_64";
+  #      ARCHFLAGS = "-arch x86_64";
 
-      DOCS_DIR = "$HOME/Documents";
-      SOURCE_DIR = "$HOME/r";
+        DOCS_DIR = "$HOME/Documents";
+        SOURCE_DIR = "$HOME/r";
 
-      GRAPHVIZ_DOT = "$HOME/.nix-profile/bin/dot";
+        GRAPHVIZ_DOT = "$HOME/.nix-profile/bin/dot";
 
-#      ANT_HOME = "$SOURCE_DIR/java/apache-ant-1.7.0";
-#      GROOVY_HOME = "/usr/local/Cellar/groovy/2.0.5/libexec";
-#      M2_HOME = "$SOURCE_DIR/java/apache-maven-2.2.1";
-#      ANDROID_HOME = "$SOURCE_DIR/java/android-sdk-mac_x86-1.5_r3";
+#        ANT_HOME = "$SOURCE_DIR/java/apache-ant-1.7.0";
+#        GROOVY_HOME = "/usr/local/Cellar/groovy/2.0.5/libexec";
+#        M2_HOME = "$SOURCE_DIR/java/apache-maven-2.2.1";
+#        ANDROID_HOME = "$SOURCE_DIR/java/android-sdk-mac_x86-1.5_r3";
 
-#      DYLD_LIBRARY_PATH = "$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/";
-#      NODE_PATH = "/usr/local/lib/node_modules";
+#        DYLD_LIBRARY_PATH = "$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/";
+#        NODE_PATH = "/usr/local/lib/node_modules";
 
-#      PYTHONPATH = "/usr/local/lib/python2.7/site-packages:$PYTHONPATH";
+#        PYTHONPATH = "/usr/local/lib/python2.7/site-packages:$PYTHONPATH";
 
-#      IDEA_JDK = "$JAVA_HOME";
-#      RUBYMINE_JDK = "$JAVA_HOME";
-#      JDK_HOME = "$JAVA_HOME";
+#        IDEA_JDK = "$JAVA_HOME";
+#        RUBYMINE_JDK = "$JAVA_HOME";
+#        JDK_HOME = "$JAVA_HOME";
 
-      # Required for rvm build of Ruby 1.8.7 to find XQuartz include files.
-#      CPPFLAGS = "-I/opt/X11/include";
-    };
-    shellAliases = {
-
-      # General.
-      h = "history";
-      ls = "ls --color=auto -sF";
-      l = "ls";
-      la = "l -a";
-      ll = "l -l";
-      u = "cd ..";
-      r = "rsync";
-      pg = "ping google.com";
-      vi = "vim";
-      vish = "vi $(find . -type f -print | xargs grep -l '^#\!/bin/bash')";
-      rg1 = "rg --max-depth 1";
-      m = "ssh moon";
-      n = "ssh nixos";
-      p = "ssh puff";
-
-      # Git.
-      gi = "git init";
-      gcl = "git clone";
-      g = "git status";
-      ga = "git add .";
-      gl = "git log";
-      gd = "git diff";
-      gdc = "git diff --cached";
-      gc = "git commit";
-      gca = "git commit -a -m _";
-      gp = "git push";
-      gpom = "git push origin master";
-      gpl = "git pull";
-      gplom = "git pull origin master";
-      gt = "git tag";
-      gb = "git branch -a";
-      gco = "git checkout";
-      gs = "git stash";
-      gsp = "git stash pop";
-      gsl = "git stash list";
-      gss = "git stash show";
-      gsd = "git stash drop";
-      gr = "git remote -v";
-      gitrm = "git stat | grep deleted | awk '{print $3}' | xargs git rm";
-    };
-  };
-
-  programs.k9s.enable = true;
-  programs.lazydocker.enable = true;
-  programs.lazysql.enable = true;
-
-  programs.lazygit = {
-    enable = true;
-    enableBashIntegration = true;
-  };
-
-  programs.direnv = {
-    enable = true;
-    enableBashIntegration = true;
-    config.global.strict_env = true;
-    nix-direnv.enable = true;
-  };
-
-  programs.git = {
-    enable = true;
-    settings = {
-      alias = {
-        changes = "diff --name-status -r";
-        st = "status";
-        ci = "commit";
-        co = "checkout";
-        di = "diff";
-        dc = "diff --cached";
-        aa = "add --all";
-        reb = "rebase";
-        br = "branch";
-        up = "pull --rebase";
-        pullff = "pull --ff-only";
-        merge = "merge --no-ff";
-        svnup = "svn fetch";
-        sup = "svn fetch";
-        svnci = "svn dcommit";
-        sci = "svn dcommit";
-        sreb = "svn rebase";
-        srt = "svn rebase remotes/trunk";
-        srebt = "svn rebase remotes/trunk";
-        unstage = "reset HEAD --";
-        last = "log -1 HEAD";
-        lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative";
-        stash-some = "stash save --patch";
-        put = "push origin HEAD";
-        push-all = "!for i in $(git config --list | grep -E ^remote\\..+\\.url | sed -E 's/^remote\\.(.*)\\.url=.*/\\1/'); do git push $i master; done";
-        amend = "commit --amend";
-        head = "!git l -1";
-        h = "!git head";
-        r = "!git l -20";
-        ra = "!git r --all";
-        ff = "merge --ff-only";
-        l = "log --graph --abbrev-commit --date=relative";
-        la = "!git l --all";
-        div = "divergence";
-        gn = "goodness";
-        gnc = "goodness --cached";
-        fa = "fetch --all";
-        pom = "push origin master";
-        uncommit = "reset --soft";
-        unadd = "reset --mixed";
-        undo = "reset --hard";
+        # Required for rvm build of Ruby 1.8.7 to find XQuartz include files.
+#        CPPFLAGS = "-I/opt/X11/include";
       };
-      apply = {
-        whitespace = "nowarn";
-      };
-      color = {
-        status = "auto";
-        diff = "auto";
-        branch = "auto";
-        ui = "always";
-      };
-      core = {
-        editor = "vim";
-        whitespace = "fix";
-        autocrlf = "input";
-      };
-      credential = {
-        helper = "osxkeychain";
-      };
-      diff = {
-        renames = true;
-      };
-      diff."ruby" = {
-        funcname = "^ *\\(\\(class\\|module\\|def\\) .*\\)";
-      };
-      format = {
-        pretty = "format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset";
-      };
-      init = {
-	      defaultBranch = "master";
-      };
-      merge = {
-        summary = true;
-        tool = "opendiff";
-#        tool = "vimdiff";
-      };
-      pull = {
-        default = "tracking";
-        rebase = true;
-      };
-      push = {
-        default = "tracking";
-      };
-      rerere = {
-        enabled = true;
-        autoUpdate = true;
+      shellAliases = {
+
+        # General.
+        h = "history";
+        ls = "ls --color=auto -sF";
+        l = "ls";
+        la = "l -a";
+        ll = "l -l";
+        u = "cd ..";
+        r = "rsync";
+        pg = "ping google.com";
+        vi = "vim";
+        vish = "vi $(find . -type f -print | xargs grep -l '^#\!/bin/bash')";
+        rg1 = "rg --max-depth 1";
+        m = "ssh moon";
+        n = "ssh nixos";
+        p = "ssh puff";
+
+        # Git.
+        gi = "git init";
+        gcl = "git clone";
+        g = "git status";
+        ga = "git add .";
+        gl = "git log";
+        gd = "git diff";
+        gdc = "git diff --cached";
+        gc = "git commit";
+        gca = "git commit -a -m _";
+        gp = "git push";
+        gpom = "git push origin master";
+        gpl = "git pull";
+        gplom = "git pull origin master";
+        gt = "git tag";
+        gb = "git branch -a";
+        gco = "git checkout";
+        gs = "git stash";
+        gsp = "git stash pop";
+        gsl = "git stash list";
+        gss = "git stash show";
+        gsd = "git stash drop";
+        gr = "git remote -v";
+        gitrm = "git stat | grep deleted | awk '{print $3}' | xargs git rm";
       };
     };
-    ignores = [
-      ".DS_Store"
-      "workspace.xml"
-      ".rakeTasks"
-      ".generators"
-      ".name"
-      "*.iml"
-      "modules.xml"
-      "dataSources.ids"
-      "dataSources.xml"
-      "vcs.xml"
-    ];
-    includes = [
-      { path = "~/.gitconfig.local"; }
-    ];
-  };
 
-  # TODO Incorporate .vimrc into this configuration. Not getting picked up.
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    vimAlias = true;
-    extraConfig = "colorscheme gruvbox";
-    plugins = with pkgs.vimPlugins; [
-      vim-nix
-      gruvbox
-    ];
-  };
+    k9s.enable = true;
+    lazydocker.enable = true;
+    lazysql.enable = true;
 
-  programs.nix-index = {
-    enable = true;
-    enableBashIntegration = true;
-  };
-
-  programs.command-not-found.enable = false;
-
-  programs.readline = {
-    enable = true;
-    variables = {
-      show-all-if-ambiguous = "On";
+    lazygit = {
+      enable = true;
+      enableBashIntegration = true;
     };
-    bindings = {
-      "\\ep" = "history-search-backward";
-    };
-  };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      config.global.strict_env = true;
+      nix-direnv.enable = true;
+    };
+
+    git = {
+      enable = true;
+      settings = {
+        alias = {
+          changes = "diff --name-status -r";
+          st = "status";
+          ci = "commit";
+          co = "checkout";
+          di = "diff";
+          dc = "diff --cached";
+          aa = "add --all";
+          reb = "rebase";
+          br = "branch";
+          up = "pull --rebase";
+          pullff = "pull --ff-only";
+          merge = "merge --no-ff";
+          svnup = "svn fetch";
+          sup = "svn fetch";
+          svnci = "svn dcommit";
+          sci = "svn dcommit";
+          sreb = "svn rebase";
+          srt = "svn rebase remotes/trunk";
+          srebt = "svn rebase remotes/trunk";
+          unstage = "reset HEAD --";
+          last = "log -1 HEAD";
+          lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative";
+          stash-some = "stash save --patch";
+          put = "push origin HEAD";
+          push-all = "!for i in $(git config --list | grep -E ^remote\\..+\\.url | sed -E 's/^remote\\.(.*)\\.url=.*/\\1/'); do git push $i master; done";
+          amend = "commit --amend";
+          head = "!git l -1";
+          h = "!git head";
+          r = "!git l -20";
+          ra = "!git r --all";
+          ff = "merge --ff-only";
+          l = "log --graph --abbrev-commit --date=relative";
+          la = "!git l --all";
+          div = "divergence";
+          gn = "goodness";
+          gnc = "goodness --cached";
+          fa = "fetch --all";
+          pom = "push origin master";
+          uncommit = "reset --soft";
+          unadd = "reset --mixed";
+          undo = "reset --hard";
+        };
+        apply = {
+          whitespace = "nowarn";
+        };
+        color = {
+          status = "auto";
+          diff = "auto";
+          branch = "auto";
+          ui = "always";
+        };
+        core = {
+          editor = "vim";
+          whitespace = "fix";
+          autocrlf = "input";
+        };
+        credential = {
+          helper = "osxkeychain";
+        };
+        diff = {
+          renames = true;
+        };
+        diff."ruby" = {
+          funcname = "^ *\\(\\(class\\|module\\|def\\) .*\\)";
+        };
+        format = {
+          pretty = "format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset";
+        };
+        init = {
+  	      defaultBranch = "master";
+        };
+        merge = {
+          summary = true;
+          tool = "opendiff";
+  #        tool = "vimdiff";
+        };
+        pull = {
+          default = "tracking";
+          rebase = true;
+        };
+        push = {
+          default = "tracking";
+        };
+        rerere = {
+          enabled = true;
+          autoUpdate = true;
+        };
+      };
+      ignores = [
+        ".DS_Store"
+        "workspace.xml"
+        ".rakeTasks"
+        ".generators"
+        ".name"
+        "*.iml"
+        "modules.xml"
+        "dataSources.ids"
+        "dataSources.xml"
+        "vcs.xml"
+      ];
+      includes = [
+        { path = "~/.gitconfig.local"; }
+      ];
+    };
+
+    # TODO Incorporate .vimrc into this configuration. Not getting picked up.
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      vimAlias = true;
+      extraConfig = "colorscheme gruvbox";
+      plugins = with pkgs.vimPlugins; [
+        vim-nix
+        gruvbox
+      ];
+    };
+
+    nix-index = {
+      enable = true;
+      enableBashIntegration = true;
+    };
+
+    command-not-found.enable = false;
+
+    readline = {
+      enable = true;
+      variables = {
+        show-all-if-ambiguous = "On";
+      };
+      bindings = {
+        "\\ep" = "history-search-backward";
+      };
+    };
+
+    # Let Home Manager install and manage itself.
+    home-manager.enable = true;
+  };
 
   # TODO Look into using lorri. Should this go in NixOS/nix-darwin configuration.
   #services = {
