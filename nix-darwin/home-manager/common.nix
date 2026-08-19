@@ -86,6 +86,73 @@ in
     rsync
   ] ++ lib.optional pkgs.stdenv.hostPlatform.isLinux file; # NixOS only. Use macOS supplied version of file in nix-darwin.
 
+  programs.bash = {
+    enable = true;
+
+    # LESS_TERMCAP variables are set here because home-manager sessionVariables
+    # values are surrounded by double quotes, which defeats the shell quoting of
+    # escape characters.
+    bashrcExtra = ''
+      unset NIX_PATH
+
+      eval $(dircolors ~/.nix-profile/share/LS_COLORS)
+
+      export LESS_TERMCAP_mb=$'\e[1;32m';
+      export LESS_TERMCAP_md=$'\e[1;32m';
+      export LESS_TERMCAP_me=$'\e[0m';
+      export LESS_TERMCAP_se=$'\e[0m';
+      export LESS_TERMCAP_so=$'\e[01;33m';
+      export LESS_TERMCAP_ue=$'\e[0m';
+      export LESS_TERMCAP_us=$'\e[1;4;31m';
+
+      # TODO Phase out once all settings have been migrated to Nix.
+      . ~/.oldbashrc
+    '';
+    shellAliases = {
+
+      # General.
+      h = "history";
+      ls = "ls --color=auto -sF";
+      l = "ls";
+      la = "l -a";
+      ll = "l -l";
+      u = "cd ..";
+      r = "rsync";
+      pg = "ping google.com";
+      vi = "vim";
+      vish = "vi $(find . -type f -print | xargs grep -l '^#\!/bin/bash')";
+      rg1 = "rg --max-depth 1";
+      m = "ssh moon";
+      n = "ssh nixos";
+      p = "ssh puff";
+
+      # Git.
+      gi = "git init";
+      gcl = "git clone";
+      g = "git status";
+      ga = "git add .";
+      gl = "git log";
+      gd = "git diff";
+      gdc = "git diff --cached";
+      gc = "git commit";
+      gca = "git commit -a -m _";
+      gp = "git push";
+      gpom = "git push origin master";
+      gpl = "git pull";
+      gplom = "git pull origin master";
+      gt = "git tag";
+      gb = "git branch -a";
+      gco = "git checkout";
+      gs = "git stash";
+      gsp = "git stash pop";
+      gsl = "git stash list";
+      gss = "git stash show";
+      gsd = "git stash drop";
+      gr = "git remote -v";
+      gitrm = "git stat | grep deleted | awk '{print $3}' | xargs git rm";
+    };
+  };
+
   programs.k9s.enable = true;
   programs.lazydocker.enable = true;
   programs.lazysql.enable = true;
@@ -215,73 +282,6 @@ in
   #services = {
     #lorri.enable = true;
   #};
-
-  programs.bash = {
-    enable = true;
-
-    # LESS_TERMCAP variables are set here because home-manager sessionVariables
-    # values are surrounded by double quotes, which defeats the shell quoting of
-    # escape characters.
-    bashrcExtra = ''
-      unset NIX_PATH
-
-      eval $(dircolors ~/.nix-profile/share/LS_COLORS)
-
-      export LESS_TERMCAP_mb=$'\e[1;32m';
-      export LESS_TERMCAP_md=$'\e[1;32m';
-      export LESS_TERMCAP_me=$'\e[0m';
-      export LESS_TERMCAP_se=$'\e[0m';
-      export LESS_TERMCAP_so=$'\e[01;33m';
-      export LESS_TERMCAP_ue=$'\e[0m';
-      export LESS_TERMCAP_us=$'\e[1;4;31m';
-
-      # TODO Phase out once all settings have been migrated to Nix.
-      . ~/.oldbashrc
-    '';
-    shellAliases = {
-
-      # General.
-      h = "history";
-      ls = "ls --color=auto -sF";
-      l = "ls";
-      la = "l -a";
-      ll = "l -l";
-      u = "cd ..";
-      r = "rsync";
-      pg = "ping google.com";
-      vi = "vim";
-      vish = "vi $(find . -type f -print | xargs grep -l '^#\!/bin/bash')";
-      rg1 = "rg --max-depth 1";
-      m = "ssh moon";
-      n = "ssh nixos";
-      p = "ssh puff";
-
-      # Git.
-      gi = "git init";
-      gcl = "git clone";
-      g = "git status";
-      ga = "git add .";
-      gl = "git log";
-      gd = "git diff";
-      gdc = "git diff --cached";
-      gc = "git commit";
-      gca = "git commit -a -m _";
-      gp = "git push";
-      gpom = "git push origin master";
-      gpl = "git pull";
-      gplom = "git pull origin master";
-      gt = "git tag";
-      gb = "git branch -a";
-      gco = "git checkout";
-      gs = "git stash";
-      gsp = "git stash pop";
-      gsl = "git stash list";
-      gss = "git stash show";
-      gsd = "git stash drop";
-      gr = "git remote -v";
-      gitrm = "git stat | grep deleted | awk '{print $3}' | xargs git rm";
-    };
-  };
 
   # TODO Incorporate .vimrc into this configuration. Not getting picked up.
   programs.neovim = {
