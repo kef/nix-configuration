@@ -86,6 +86,9 @@
 
     casks = [
       "llama-app" # Self-updates.
+
+      # TODO Might not be required as ghostty ships with this font built in.
+      "font-jetbrains-mono-nerd-font" # For starship shell prompt.
     ];
 
 #    masApps = {
