@@ -305,11 +305,6 @@ in
     ];
   };
 
-  # TODO Look into using lorri. Should this go in NixOS/nix-darwin configuration.
-  #services = {
-    #lorri.enable = true;
-  #};
-
   # TODO Incorporate .vimrc into this configuration. Not getting picked up.
   programs.neovim = {
     enable = true;
@@ -341,6 +336,11 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # TODO Look into using lorri. Should this go in NixOS/nix-darwin configuration.
+  #services = {
+    #lorri.enable = true;
+  #};
 
   home.enableNixpkgsReleaseCheck = true;
 
