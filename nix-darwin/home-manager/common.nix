@@ -9,6 +9,7 @@ let
   '';
 in
 {
+  # TODO Convert packages to home manager programs and services options where available.
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     jq
@@ -72,10 +73,7 @@ in
     witr
     iproute2mac
     goose-cli
-
-    # Convert to home manager options (check other packages above).
     ollama
-
     just
 
 # TODO Install this?
@@ -97,6 +95,8 @@ in
 
       eval $(dircolors ~/.nix-profile/share/LS_COLORS)
 
+      export JAVA_HOME=$(/usr/libexec/java_home -v 26)
+
       export LESS_TERMCAP_mb=$'\e[1;32m';
       export LESS_TERMCAP_md=$'\e[1;32m';
       export LESS_TERMCAP_me=$'\e[0m';
@@ -110,6 +110,30 @@ in
     '';
     sessionVariables = {
       DISPLAY = ":0.0";
+
+#      ARCHFLAGS = "-arch x86_64";
+
+      DOCS_DIR = "$HOME/Documents";
+      SOURCE_DIR = "$HOME/r";
+
+      GRAPHVIZ_DOT = "$HOME/.nix-profile/bin/dot";
+
+#      ANT_HOME = "$SOURCE_DIR/java/apache-ant-1.7.0";
+#      GROOVY_HOME = "/usr/local/Cellar/groovy/2.0.5/libexec";
+#      M2_HOME = "$SOURCE_DIR/java/apache-maven-2.2.1";
+#      ANDROID_HOME = "$SOURCE_DIR/java/android-sdk-mac_x86-1.5_r3";
+
+#      DYLD_LIBRARY_PATH = "$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/";
+#      NODE_PATH = "/usr/local/lib/node_modules";
+
+#      PYTHONPATH = "/usr/local/lib/python2.7/site-packages:$PYTHONPATH";
+
+#      IDEA_JDK = "$JAVA_HOME";
+#      RUBYMINE_JDK = "$JAVA_HOME";
+#      JDK_HOME = "$JAVA_HOME";
+
+      # Required for rvm build of Ruby 1.8.7 to find XQuartz include files.
+#      CPPFLAGS = "-I/opt/X11/include";
     };
     shellAliases = {
 
