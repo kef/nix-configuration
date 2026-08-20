@@ -338,6 +338,9 @@ in
     starship = {
       enable = true;
       enableBashIntegration = true;
+      settings = {
+        add_newline = true; # Default.
+      };
     };
 
     # Let Home Manager install and manage itself.
